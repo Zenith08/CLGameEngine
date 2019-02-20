@@ -8,6 +8,12 @@
 
 #include "GameObject.h"
 
+GameObject::GameObject()
+{
+	boundingBox = CollisionBox();
+	position = { 0, 0 };
+}
+
 void GameObject::tick(double delta) {
 	//Update the bounding box position to the current coordinates.
 	boundingBox.setCoordinates(position.x, position.y);

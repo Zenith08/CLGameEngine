@@ -24,6 +24,7 @@ struct Vector2 {
 //Represents an object which exists in two dimensional space, can be interacted with, and can be displayed.
 class GameObject {
 public:
+	GameObject();
 	//The position in 2d space.
 	Vector2 position;
 	//The texture to display. *All textures must be 5x5 chars

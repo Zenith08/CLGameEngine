@@ -27,13 +27,13 @@ void gameLoop();
 void delay(int mSec);
 
 //The number of updates per second the program will target. The game loop will sleep until at least this time passes between frames.
-const double fps = 15.0;
+const double fps = 30.0;
 //The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
 const double frametime = 1000.0 / fps;
 
 //The current game state to run. It will recieve updates from the engine at the number of fps.
 GameStateJump jumper = GameStateJump();
-GameState *state = &jumper;
+GameStateJump *state = &jumper;
 //The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 Screen display = Screen();
 
@@ -81,9 +81,9 @@ void gameLoop() {
 
 	while (true) {
 		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
-		cout << "FPS: " << 1000 / deltaTime.count() << endl;
-		cout << "Delta: " << deltaTime.count() << endl;
-		cout << "Pressed: " << input::getPressed();
+		cout << "FPS: " << 1000 / deltaTime.count() << "\n";
+		cout << "Delta: " << deltaTime.count() << "\n";
+		cout << "Pressed: " << input::getPressed() << "\n";
 
 		//Ticks the current game state for logic updates.
 		//Delta time is included so logic update rate can be independent of frame rate.

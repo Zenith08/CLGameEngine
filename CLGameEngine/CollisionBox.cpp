@@ -10,7 +10,7 @@
 
 //A default constructor which simply calls CollisionBox(int, int, int, int) with default arguments.
 CollisionBox::CollisionBox() {
-	CollisionBox(0, 0, 1, 1);
+	CollisionBox(0, 0, 0, 0);
 }
 
 //Initializes a CollisionBox with dimensions and size based on the parameters input.

@@ -8,6 +8,7 @@
 
 #include "Screen.h"
 #include <iostream>
+#include "conio.h"
 using namespace std;
 
 //Initialize the screen - '?' is treated as ' ' and is used as a default value in the class.
@@ -18,7 +19,6 @@ Screen::Screen() {
 			display[x][y] = '?';
 		}
 	}
-
 }
 
 //Drawing a texture loops through the coordinates on the texture and maps them to coordinates on the display, offset by positions x and y.
@@ -57,8 +57,10 @@ void Screen::render() {
 				cout << " ";
 			}
 		}
-		cout << endl;
+		cout << "\n";
 	}
+
+	cout << endl;
 }
 
 void Screen::clear() {

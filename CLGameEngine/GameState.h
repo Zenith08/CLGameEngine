@@ -30,7 +30,15 @@ public:
 	void render(Screen *display);
 	//An array of objects in the game to be updated and rendered each frame.
 	//A derrived game state may put it's objects into this array to have them automatically added to the game.
-	GameObject objects[255];
+	GameObject *objects[255];
+
+	void addGameObject(GameObject *newObj);
+
+	GameObject *staticCollision[128];
+
+	void addStaticCollider(GameObject *staticObj);
+
+	bool overlapsStatic(GameObject *dynamicQuestion);
 };
 
 #endif /* GameState_hpp */
