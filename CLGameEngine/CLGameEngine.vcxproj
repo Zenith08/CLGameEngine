@@ -154,6 +154,7 @@
     <ClInclude Include="CollisionBox.h" />
     <ClInclude Include="GameInput.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectBall.h" />
     <ClInclude Include="GameObjectWall.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateJump.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="CollisionBox.cpp" />
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectBall.cpp" />
     <ClCompile Include="GameObjectWall.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateJump.cpp" />
