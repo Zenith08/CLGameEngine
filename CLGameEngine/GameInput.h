@@ -9,4 +9,5 @@ namespace input {
 
 	int getPressed();
 	void inputLoop();
+	void usedPress();
 }

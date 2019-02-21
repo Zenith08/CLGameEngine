@@ -8,6 +8,10 @@
 
 #include "GameState.h"
 
+GameState::GameState() {
+	
+}
+
 void GameState::tick(double delta) {
 	//Ticks each game object within the game state.
 	for (int i = 0; i < 255; i++) {

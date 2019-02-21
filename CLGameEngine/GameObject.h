@@ -34,11 +34,11 @@ public:
 	//Allows for updating logic and movement.
 	//delta - The number of milliseconds since the last frame.
 	//Using delta in movement will achieve consistent movement regardless of framerate.
-	void tick(double delta);
+	virtual void tick(double delta);
 	//Instructs the game object to render it's texture to the screen.
 	//May be overridden to allow multiple / changing textures.
 	//Param Screen - a reffernce to the display which will be used to draw the display.
-	void render(Screen *display);
+	virtual void render(Screen *display);
 };
 
 #endif /* GameObject_hpp */

@@ -5,5 +5,7 @@ class GameObjectBall :
 {
 public:
 	GameObjectBall();
+
+	void tick(double delta);
 };
 

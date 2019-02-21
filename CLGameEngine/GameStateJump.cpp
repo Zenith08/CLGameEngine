@@ -22,6 +22,8 @@ GameStateJump::GameStateJump() : GameState() {
 
 	wallRight1 = GameObjectWall(11, 1, 1, 5);
 	wallRight2 = GameObjectWall(11, 6, 1, 5);
+
+	ball = GameObjectBall();
 	
 	addStaticCollider(&wallTop1);
 	addStaticCollider(&wallTop2);
@@ -31,6 +33,8 @@ GameStateJump::GameStateJump() : GameState() {
 	addStaticCollider(&wallLeft2);
 	addStaticCollider(&wallRight1);
 	addStaticCollider(&wallRight2);
+
+	addGameObject(&ball);
 }
 
 void GameStateJump::tick(double delta) {
