@@ -10,14 +10,17 @@
 #ifndef Screen_hpp
 #define Screen_hpp
 
-#define XSIZE 15
-#define YSIZE 15
-
 #include "pch.h"
 #include <stdio.h>
 #include <string>
 #include <vector>
+
 using namespace std;
+
+const int XSIZE = 15;
+const int YSIZE = 15;
+const string BLANK = " ";
+const string NEW = "\n";
 
 //A class representing a screen drawn to the termianl.
 //Useful for drawing objects to the screen on a consistent basis.

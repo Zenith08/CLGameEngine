@@ -21,7 +21,7 @@ GameObjectWall::GameObjectWall(int x, int y, int width, int height)
 			if (lx < width && ly < height) {
 				texture[lx][ly] = '#';
 			} else { //Otherwise put a blank in.
-				texture[lx][ly] = '?';
+				texture[lx][ly] = ' ';
 			}
 		}
 	}

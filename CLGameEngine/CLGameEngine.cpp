@@ -25,6 +25,7 @@ using namespace std;
 int main(int argc, const char * argv[]) {
 	//Starts the main game loop with whatever game state has been configured.
 	game::gameLoop();
+	cout << "Back in main" << endl;
 	//Has to be there but currently doesn't run.
 	return 0;
 }

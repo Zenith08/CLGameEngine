@@ -7,6 +7,7 @@
 //
 
 #include "CollisionBox.h"
+#include <iostream>
 
 //A default constructor which simply calls CollisionBox(int, int, int, int) with default arguments.
 CollisionBox::CollisionBox() {
@@ -33,18 +34,28 @@ void CollisionBox::setDimensions(int newWidth, int newHeight) {
 	height = newHeight;
 }
 
+int CollisionBox::getRightEdge()
+{
+	return x+width;
+}
+
+int CollisionBox::getBottomEdge()
+{
+	return y+height;
+}
+
 //Checks if box 1 and box 2 are overlapping at any point.
 //True if box1 and box2 are overlapping.
 //False otherwise.
 bool Collisions::overlapping(CollisionBox box1, CollisionBox box2) {
 	//First, check if the boxes are crossing on the x dimension.
-	//if(box2 left < box1 left < box2 right OR box2 left < box1 right < box2 right)
-	if ((box1.x >= box2.x && box1.x <= box2.x + box2.width) || (box1.x + box1.width >= box2.x && box1.x + box1.width <= box2.x + box2.width)) {
-		//if(box2 top < box1 top < box2 bottom OR box2 top < box1 bottom < box2 top)
-		if ((box1.y >= box2.y && box1.y <= box2.y + box2.height) || (box1.y + box1.height >= box2.y && box1.y + box1.height <= box2.y + box2.height)) {
-			return true; //The boxes are then overlapping.
-		}
+	//Source https://stackoverflow.com/questions/306316/determine-if-two-rectangles-overlap-each-other
+	if (box1.x < box2.getRightEdge() && box1.getRightEdge() > box2.x &&
+		box1.y < box2.getBottomEdge() && box1.getBottomEdge() > box2.y) {
+		//std::cout << "Collision detected\n";
+		return true;
 	}
 	//Else
+	//std::cout << "No collision \n";
 	return false;
 }

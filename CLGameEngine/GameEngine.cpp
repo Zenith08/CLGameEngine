@@ -8,11 +8,15 @@
 	//The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
 //const double game::frametime = 1000.0 / fps;
 
+//Code 27 ends the game
+
 //The current game state to run. It will recieve updates from the engine at the number of fps.
 GameStateJump game::jumper = GameStateJump();
 GameState *game::state = &game::jumper;
 //The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 Screen game::display = Screen();
+
+bool game::contPlaying = true;
 
 void game::gameLoop()
 {
@@ -25,12 +29,12 @@ void game::gameLoop()
 	last = chrono::high_resolution_clock::now(); //Initializes the time of last frame to now. Just to have a base value, it should not matter.
 	deltaTime = current - last; //Initializes delta time, should not matter.
 
-	while (true) {
-		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
-		cout << "FPS: " << 1000 / deltaTime.count() << "\n";
-		cout << "Delta: " << deltaTime.count() << "\n";
-		cout << "Pressed: " << input::getPressed() << "\n";
+	contPlaying = true;
 
+	while (contPlaying) {
+		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
+		cout << "FPS: " << 1000 / deltaTime.count() << "\n" << "Delta: " << deltaTime.count() << "\n" << "Pressed: " << input::getPressed() << "\n";
+		
 		//Ticks the current game state for logic updates.
 		//Delta time is included so logic update rate can be independent of frame rate.
 		state->tick(deltaTime.count());
@@ -52,6 +56,12 @@ void game::gameLoop()
 		} while (deltaTime.count() < frametime); //If there was time to wait, return and update the information.
 		//Lastly set this current frame to the last frame and start over again.
 		last = chrono::high_resolution_clock::now();
+
+		//Allows the player to end the game by pressing q.
+		if (input::getPressed() == 113) {
+			contPlaying = false;
+			input::usedPress();
+		}
 	}
 }
 

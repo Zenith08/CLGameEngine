@@ -11,9 +11,11 @@ namespace game {
 	void delay(int mSec);
 
 	//The number of updates per second the program will target. The game loop will sleep until at least this time passes between frames.
-	const double fps = 5.0;
+	const double fps = 30.0;
 	//The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
 	const double frametime = 1000.0 / fps;
+
+	extern bool contPlaying;
 
 	//The current game state to run. It will recieve updates from the engine at the number of fps.
 	extern GameStateJump jumper; // = GameStateJump();

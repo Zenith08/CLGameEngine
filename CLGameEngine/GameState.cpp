@@ -15,7 +15,7 @@ GameState::GameState() {
 void GameState::tick(double delta) {
 	//Ticks each game object within the game state.
 	for (int i = 0; i < 255; i++) {
-		if (objects[i] != nullptr) {
+		if (objects[i]) {
 			objects[i]->tick(delta);
 		}
 	}
@@ -24,7 +24,7 @@ void GameState::tick(double delta) {
 void GameState::render(Screen *display) {
 	//Renders each object within the game state.
 	for (int i = 0; i < 255; i++) {
-		if (objects[i] != nullptr) {
+		if (objects[i]) {
 			objects[i]->render(display);
 		}
 	}
@@ -33,7 +33,7 @@ void GameState::render(Screen *display) {
 void GameState::addGameObject(GameObject * newObj)
 {
 	int index = 0;
-	while (objects[index] != nullptr) {
+	while (objects[index]) {
 		index++;
 	}
 	objects[index] = newObj;
@@ -43,7 +43,7 @@ void GameState::addStaticCollider(GameObject * staticObj)
 {
 	addGameObject(staticObj);
 	int index = 0;
-	while (staticCollision[index] != nullptr) {
+	while (staticCollision[index]) {
 		index++;
 	}
 	staticCollision[index] = staticObj;
@@ -51,10 +51,13 @@ void GameState::addStaticCollider(GameObject * staticObj)
 
 bool GameState::overlapsStatic(GameObject * dynamicQuestion)
 {
-	for (int i = 0; i < 128; i++) {
+	int i = 0;
+	while (staticCollision[i]) {
 		if (Collisions::overlapping(dynamicQuestion->boundingBox, staticCollision[i]->boundingBox)) {
 			return true;
 		}
+		i++;
 	}
+	
 	return false;
 }
