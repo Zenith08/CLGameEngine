@@ -14,7 +14,7 @@ namespace game {
 	const double fps = 30.0;
 	//The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
 	const double frametime = 1000.0 / fps;
-
+	//While this is true, the game will continue. Pressing Q will set this to false signaling to the engine that it should shut down in a controlled way.
 	extern bool contPlaying;
 
 	//The current game state to run. It will recieve updates from the engine at the number of fps.

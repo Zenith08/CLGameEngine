@@ -32,13 +32,15 @@ public:
 	//An array of objects in the game to be updated and rendered each frame.
 	//A derrived game state may put it's objects into this array to have them automatically added to the game.
 	GameObject *objects[255];
-
+	//A simple helper method which adds a game object to the array without overwriting existing gameObjects.
+	//This is better than hard coding each game object into an array slot.
 	void addGameObject(GameObject *newObj);
-
+	//Allows easy storage game objects which are not intended to move and serve as walls. Allows all game objects to easily have access to these objects.
 	GameObject *staticCollision[128];
-
+	//Adds a static game object as both a GameObject and a static collider.
+	//It will not override existing entries in either list and is prefered to hardcoding array slots.
 	void addStaticCollider(GameObject *staticObj);
-
+	//Allows a dynamic game object to check if it is overlapping any static game object in the world based on the supplied collision box.
 	bool overlapsStatic(GameObject *dynamicQuestion);
 };
 

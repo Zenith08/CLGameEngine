@@ -20,6 +20,7 @@
 //An example derrived game state.
 class GameStateJump : public GameState {
 public:
+	//The game objects used in this game.
 	GameObjectWall wallTop1;
 	GameObjectWall wallTop2;
 
@@ -35,7 +36,9 @@ public:
 	GameObjectBall ball;
 	GameObjectDodgeball dodgeball;
 
+	//A default constructor lets us initalize everything.
 	GameStateJump();
+	//Later, these will be used for custom logic and displaying to the screen.
 	void tick(double delta);
 	void render(Screen *display);
 };

@@ -11,6 +11,7 @@
 
 GameStateJump::GameStateJump() : GameState() {
 	//cout << "Constructor called" << endl;
+	//Create variables for each game object in use.
 	wallTop1 = GameObjectWall(1, 0, 5, 1);
 	wallTop2 = GameObjectWall(6, 0, 5, 1);
 
@@ -26,6 +27,7 @@ GameStateJump::GameStateJump() : GameState() {
 	ball = GameObjectBall();
 	dodgeball = GameObjectDodgeball();
 	
+	//Then add them to the game state. addStaticCollider() also calls addGameObject().
 	addStaticCollider(&wallTop1);
 	addStaticCollider(&wallTop2);
 	addStaticCollider(&wallBottom1);
@@ -35,15 +37,18 @@ GameStateJump::GameStateJump() : GameState() {
 	addStaticCollider(&wallRight1);
 	addStaticCollider(&wallRight2);
 
+	//Add the dynamic objects to the game, but not to the static colliders.
 	addGameObject(&ball);
 	addGameObject(&dodgeball);
 }
 
+//Right now we don't need it but we will.
 void GameStateJump::tick(double delta) {
 	GameState::tick(delta);
 	//cout << "Tick" << endl;
 }
 
+//Will be useful later.
 void GameStateJump::render(Screen *display) {
 	GameState::render(display);
 	//cout << "Render" << endl;
