@@ -156,6 +156,7 @@
     <ClInclude Include="GameInput.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectBall.h" />
+    <ClInclude Include="GameObjectDodgeball.h" />
     <ClInclude Include="GameObjectWall.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateJump.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectBall.cpp" />
+    <ClCompile Include="GameObjectDodgeball.cpp" />
     <ClCompile Include="GameObjectWall.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateJump.cpp" />

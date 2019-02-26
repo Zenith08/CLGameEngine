@@ -21,7 +21,6 @@ GameObjectBall::GameObjectBall()
 void GameObjectBall::tick(double delta)
 {
 	//std::cout << "Ball recieved tick" << endl;
-	std::cout << "Ball X " << position.x << " Y" << position.y << "\n";
 	if (input::getPressed() == 72) { //Up
 		boundingBox.setCoordinates(boundingBox.x, boundingBox.y - 1);
 		if (!game::getCurrentState()->overlapsStatic(this)) {

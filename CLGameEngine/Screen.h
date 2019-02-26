@@ -20,6 +20,7 @@ using namespace std;
 const int XSIZE = 15;
 const int YSIZE = 15;
 const string BLANK = " ";
+const string HOLE = "?";
 const string NEW = "\n";
 
 //A class representing a screen drawn to the termianl.

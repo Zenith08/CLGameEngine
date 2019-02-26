@@ -15,6 +15,7 @@
 #include "Screen.h"
 #include "GameObjectWall.h"
 #include "GameObjectBall.h"
+#include "GameObjectDodgeball.h"
 
 //An example derrived game state.
 class GameStateJump : public GameState {
@@ -32,6 +33,7 @@ public:
 	GameObjectWall wallRight2;
 
 	GameObjectBall ball;
+	GameObjectDodgeball dodgeball;
 
 	GameStateJump();
 	void tick(double delta);

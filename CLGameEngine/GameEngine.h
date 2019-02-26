@@ -18,7 +18,7 @@ namespace game {
 	extern bool contPlaying;
 
 	//The current game state to run. It will recieve updates from the engine at the number of fps.
-	extern GameStateJump jumper; // = GameStateJump();
+	//extern GameStateJump jumper; // = GameStateJump();
 	extern GameState *state; // = &jumper;
 	//The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 	extern Screen display; // = Screen();

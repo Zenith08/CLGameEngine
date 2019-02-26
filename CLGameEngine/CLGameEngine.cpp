@@ -21,11 +21,14 @@
 using namespace Collisions;
 using namespace std;
 
+GameStateJump jump = GameStateJump();
+
 //This is for testing or built in game states. In theory, a user would have their own main() method to run and simply call gameLoop() in this class.
 int main(int argc, const char * argv[]) {
+	//Set the running state to the default state.
+	game::state = &jump;
 	//Starts the main game loop with whatever game state has been configured.
 	game::gameLoop();
-	cout << "Back in main" << endl;
-	//Has to be there but currently doesn't run.
+	//Ends the game and returns no error code.
 	return 0;
 }

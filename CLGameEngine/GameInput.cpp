@@ -1,6 +1,7 @@
 #include "GameInput.h"
 #include <thread>
 #include <iostream>
+#include "GameEngine.h"
 
 int input::lastKeypress = -1;
 std::thread input::listenThread(inputLoop);
@@ -14,8 +15,10 @@ int input::getPressed() {
 
 void input::inputLoop()
 {
-	while (true) {
-		lastKeypress = _getch();
+	while (game::contPlaying) {
+		if (lastKeypress != 113) {
+			lastKeypress = _getch();
+		}
 	}
 }
 

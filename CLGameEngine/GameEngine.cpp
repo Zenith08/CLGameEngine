@@ -11,8 +11,8 @@
 //Code 27 ends the game
 
 //The current game state to run. It will recieve updates from the engine at the number of fps.
-GameStateJump game::jumper = GameStateJump();
-GameState *game::state = &game::jumper;
+//GameStateJump game::jumper = GameStateJump();
+GameState *game::state; // = &game::jumper;
 //The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 Screen game::display = Screen();
 
@@ -60,9 +60,10 @@ void game::gameLoop()
 		//Allows the player to end the game by pressing q.
 		if (input::getPressed() == 113) {
 			contPlaying = false;
-			input::usedPress();
+			//input::usedPress();
 		}
 	}
+	input::listenThread.join();
 }
 
 void game::delay(int mSec)
