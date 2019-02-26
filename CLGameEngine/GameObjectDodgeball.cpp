@@ -37,6 +37,7 @@ void GameObjectDodgeball::tick(double delta)
 			//Bounce
 			velocity.x *= -1;
 			velocity.y *= -1;
+			boundingBox.setCoordinates(position.x + 1, position.y + 1);
 		}
 		else {
 			position.x += velocity.x;
