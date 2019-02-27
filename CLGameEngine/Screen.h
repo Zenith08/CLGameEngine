@@ -20,7 +20,8 @@ using namespace std;
 const int XSIZE = 15;
 const int YSIZE = 15;
 const string BLANK = " ";
-const string HOLE = "?";
+//const string HOLE = "?";
+const char EMPTY = '?';
 const string NEW = "\n";
 
 //A class representing a screen drawn to the termianl.
@@ -44,6 +45,14 @@ public:
 	//x - the X position of the top left corner of the texture. Can be outside the range of the window but will be ignored.
 	//y - the Y position of the top left corner. Follows the same limitations as the x argument.
 	void draw(char texture[5][5], int x, int y);
+	//Draws a string to the current display.
+	//The string will override anything currently present.
+	//'?' characters will not be rendered to the screen.
+	//Args:
+	//print - the string to display on screen.
+	//x - the X position of the left side of the string. Will be ignored if it is outside the main window range.
+	//y - the Y position of the string. Follows the same limitations as the x argument.
+	void drawString(string print, int x, int y);
 	//Renders the current display to the screen.
 	//Characters which are '?' are not rendered and replaced by ' '.
 	void render();

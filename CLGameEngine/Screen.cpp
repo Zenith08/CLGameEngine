@@ -17,7 +17,7 @@ using namespace std;
 Screen::Screen() {
 	for (int y = 0; y < YSIZE; y++) {
 		for (int x = 0; x < XSIZE; x++) {
-			display[x][y] = '?';
+			display[x][y] = EMPTY;
 		}
 	}
 }
@@ -46,32 +46,48 @@ void Screen::draw(char texture[5][5], int x, int y) {
 	//cout << "Returned" << endl;
 }
 
-void Screen::render() {
-	//cout << wipeScreen << endl;
-	string frame = "";
-
-	for (int y = 0; y < XSIZE; y++) {
-		for (int x = 0; x < XSIZE; x++) {
-			if (display[x][y] != '?') {
-				//cout << display[x][y];
-				frame += display[x][y];
-			}
-			else {
-				//cout << " ";
-				frame += BLANK;
+//Draws a 1 dimensional string to the screen.
+void Screen::drawString(string print, int x, int y)
+{
+	if (y < YSIZE && y >= 0) { //Make sure we are within the array y axis.
+		for (int xLoop = 0; xLoop < print.length(); xLoop++) { //For each character in the string
+			if (x + xLoop < XSIZE) { //Make sure it fits on the x axis of the screen.
+				display[x + xLoop][y] = print[xLoop]; //Then draw it to the screen.
 			}
 		}
-		//cout << "\n";
+	}
+}
+
+void Screen::render() {
+	//cout << wipeScreen << endl;
+	//Frame is a single string which will be printed.
+	//Minimizing cout calls improves performance and the added cost of the string building is insignificant.
+	string frame = "";
+
+	//For each colum
+	for (int y = 0; y < XSIZE; y++) {
+		//And each row of each colum
+		for (int x = 0; x < XSIZE; x++) {
+			if (display[x][y] != EMPTY) { //Check if the character is blank
+				frame += display[x][y]; //If it isn't, draw it.
+			}
+			else {
+				frame += BLANK; //If it is, include that.
+			}
+		}
+		//At the end of a row, create a new line for the next row.
 		frame += NEW;
 	}
+	//Once this is done, print the entire thing to the screen.
+	//Using endl here will cause a flush of the display buffer guarenteeing that the frame is drawn to the screen quickly.
 	cout << frame << endl;
-	//cout << endl;
 }
 
 void Screen::clear() {
+	//For each value in the array
 	for (int y = 0; y < YSIZE; y++) {
 		for (int x = 0; x < XSIZE; x++) {
-			display[y][x] = '?';
+			display[x][y] = EMPTY; //Set it to the designated blank character.
 		}
 	}
 }

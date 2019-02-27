@@ -12,41 +12,92 @@ GameObjectDodgeball::GameObjectDodgeball()
 		}
 	}
 
+	//Code for 2x2 dodgeball
+	/*texture[0][0] = '/';
+	texture[1][0] = '\\';
+	texture[0][1] = '\\';
 	texture[1][1] = '/';
-	texture[2][1] = '-';
-	texture[3][1] = '\\';
-	
-	texture[1][2] = '|';
-	texture[2][2] = '@';
-	texture[3][2] = '|';
 
-	texture[1][3] = '\\';
-	texture[2][3] = '-';
-	texture[3][3] = '/';
+	position = { 5, 5 };
+	velocity = { 1, -1 };
+	boundingBox = CollisionBox(position.x, position.y, 2, 2); */
+
+	//Code for 3x3 dodgeball
+	texture[0][0] = '/';
+	texture[1][0] = '-';
+	texture[2][0] = '\\';
+	
+	texture[0][1] = '|';
+	texture[1][1] = '@';
+	texture[2][1] = '|';
+
+	texture[0][2] = '\\';
+	texture[1][2] = '-';
+	texture[2][2] = '/';
 
 	//Set an initial position, velocity, and create the bounding box for collisions.
 	position = { 5, 5 };
 	velocity = { 1, -1 };
-	boundingBox = CollisionBox(1, 1, 3, 3);
+	boundingBox = CollisionBox(position.x, position.y, 3, 3);
 }
 
 void GameObjectDodgeball::tick(double delta)
 {
-	timeTilMove--; //Slows the ball down by not moving each frame.
-	if (timeTilMove == 0) { //Indicates it is a movement frame.
-		boundingBox.setCoordinates(position.x + velocity.x + 1, position.y + velocity.y + 1); //Move the collider to check the new coords.
+	//cout << "VelX = " << velocity.x << " vely " << velocity.y << "\n";
+	timeTilMove-=delta; //Slows the ball down by not moving each frame.
+	if (timeTilMove <= 0) { //Indicates it is a movement frame.
+		boundingBox.setCoordinates(position.x + velocity.x, position.y + velocity.y); //Move the collider to check the new coords.
 		if (game::getCurrentState()->overlapsStatic(this)) { //Check if the new position overlaps a static collider.
 			//If we are overlapping, change the velocity to a new velocity.
-			velocity.x *= -1;
-			velocity.y *= -1;
-			//Reset the bounding box coordinates to the actual position.
-			boundingBox.setCoordinates(position.x + 1, position.y + 1);
+			//Simulate possibilities to see what will work.
+			if (velocity.x > 0) {
+				velocity.x = roll(-2, 0);
+				if (velocity.x == 0) {
+					velocity.y = roll(-2, 2);
+				}
+			}
+			else if (velocity.x < 0) {
+				velocity.x = roll(0, 2);
+				if (velocity.x == 0) {
+					velocity.y = roll(-2, 2);
+				}
+			}
+			if (velocity.y > 0) {
+				velocity.y = roll(-2, 0);
+				if (velocity.y == 0) {
+					velocity.x = roll(-2, 2);
+				}
+			}
+			else if (velocity.y < 0) {
+				velocity.y = roll(0, 2);
+				if (velocity.y == 0) {
+					velocity.x = roll(-2, 2);
+				}
+			}
+
+			while (velocity.x == 0 && velocity.x == 0) {
+				velocity.x = roll(-2, 2);
+				velocity.y = roll(-2, 2);
+			}
 		}
 		else { //If this calls we are able to make the move. Changes the balls coordinates.
 			position.x += velocity.x;
 			position.y += velocity.y;
 		}
 		//std::cout << "Dodgeball X " << position.x << " Y" << position.y << "\n";
-		timeTilMove = 3; //Resets the frame count until the next movement.
+		timeTilMove = 100; //Resets the frame count until the next movement.
 	}
+	GameObject::tick(delta);
+}
+
+//https://stackoverflow.com/questions/5891811/generate-random-number-between-1-and-3-in-c
+int GameObjectDodgeball::roll(int min, int max)
+{
+	// x is in [0,1[
+	double x = rand() / static_cast<double>(RAND_MAX + 1);
+
+	// [0,1[ * (max - min) + min is in [min,max[
+	int that = min + static_cast<int>(x * (max - min));
+
+	return that;
 }

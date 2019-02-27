@@ -33,8 +33,9 @@ void game::gameLoop()
 
 	while (contPlaying) {
 		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
+#ifdef DEBUG_MODE
 		cout << "FPS: " << 1000 / deltaTime.count() << "\n" << "Delta: " << deltaTime.count() << "\n" << "Pressed: " << input::getPressed() << "\n";
-		
+#endif
 		//Ticks the current game state for logic updates.
 		//Delta time is included so logic update rate can be independent of frame rate.
 		state->tick(deltaTime.count());
@@ -66,11 +67,15 @@ void game::gameLoop()
 	input::listenThread.join();
 }
 
+//Simple to use delay method to enable cleaner code.
+//Just calls the equivilant function of this_thread.
+//TODO should this be a macro?
 void game::delay(int mSec)
 {
 	this_thread::sleep_for(chrono::milliseconds(mSec));
 }
 
+//Gets the current running game state. Useful for when accessing the gameState from a gameObject.
 GameState * game::getCurrentState()
 {
 	return state;

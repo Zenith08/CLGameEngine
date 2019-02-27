@@ -36,6 +36,11 @@ public:
 	GameObjectBall ball;
 	GameObjectDodgeball dodgeball;
 
+	const int playing = 0;
+	const int dead = 1;
+
+	int inGame = playing;
+
 	//A default constructor lets us initalize everything.
 	GameStateJump();
 	//Later, these will be used for custom logic and displaying to the screen.
