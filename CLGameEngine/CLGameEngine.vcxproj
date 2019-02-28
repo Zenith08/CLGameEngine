@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CollisionBox.h" />
+    <ClInclude Include="FileInput.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameInput.h" />
     <ClInclude Include="GameObject.h" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="CLGameEngine.cpp" />
     <ClCompile Include="CollisionBox.cpp" />
+    <ClCompile Include="FileInput.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="GameObject.cpp" />

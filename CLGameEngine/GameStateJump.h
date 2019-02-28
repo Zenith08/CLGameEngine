@@ -43,9 +43,15 @@ public:
 
 	//A default constructor lets us initalize everything.
 	GameStateJump();
-	//Later, these will be used for custom logic and displaying to the screen.
+	//Used for custom logic and displaying to the screen.
 	void tick(double delta);
 	void render(Screen *display);
+
+	int gameScore;
+	int highScore;
+
+	string getGameScore();
+	string getHighScore();
 };
 
 #endif /* GameStateJump_hpp */

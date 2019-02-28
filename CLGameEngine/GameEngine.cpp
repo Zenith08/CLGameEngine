@@ -3,6 +3,7 @@
 #include <thread>
 #include <iostream>
 #include "GameInput.h"
+#include "FileInput.h"
 
 //const double game::fps = 30.0;
 	//The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
@@ -30,7 +31,7 @@ void game::gameLoop()
 	deltaTime = current - last; //Initializes delta time, should not matter.
 
 	contPlaying = true;
-
+#
 	while (contPlaying) {
 		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
 #ifdef DEBUG_MODE

@@ -9,6 +9,8 @@
 #include <iostream>
 #include "GameStateJump.h"
 #include "GameInput.h"
+#include "FileInput.h"
+#include <sstream>
 
 GameStateJump::GameStateJump() : GameState() {
 	//cout << "Constructor called" << endl;
@@ -41,6 +43,17 @@ GameStateJump::GameStateJump() : GameState() {
 	//Add the dynamic objects to the game, but not to the static colliders.
 	addGameObject(&ball);
 	addGameObject(&dodgeball);
+	
+	gameScore = 0;
+	
+	vector<int> scores = file::loadScores("dodgeball.dat");
+	if (scores.size() > 0) {
+		highScore = scores[0];
+	}
+	else {
+		file::saveScores("dodgeball.dat", scores);
+		highScore = 0;
+	}
 }
 
 //Right now we don't need it but we will.
@@ -48,9 +61,17 @@ void GameStateJump::tick(double delta) {
 	GameState::tick(delta);
 	//If we are playing the game still
 	if (inGame == playing) {
+		gameScore++;
 		//Then check if the player has died.
 		if (Collisions::overlapping(dodgeball.boundingBox, ball.boundingBox)) {
 			inGame = dead; //If the player has died, indicate that to the rest of the code.
+			if (gameScore > highScore) {
+				highScore = gameScore;
+				//Save the new high score
+				vector<int> score = vector<int>();
+				score.push_back(highScore);
+				file::saveScores("dodgeball.dat", score);
+			}
 		}
 		else {
 
@@ -63,6 +84,7 @@ void GameStateJump::tick(double delta) {
 			//If they do then reset the game to a default state.
 			input::usedPress();
 			//Reset
+			gameScore = 0;
 			ball.position.x = 2;
 			ball.position.y = 2;
 			dodgeball.position.x = 5;
@@ -79,6 +101,11 @@ void GameStateJump::render(Screen *display) {
 	//If the player is not dead
 	if (inGame == playing) {
 		GameState::render(display); //Draw the game normally.
+
+		display->drawString(getGameScore(), 0, 12);
+		if (highScore != 0) {
+			display->drawString(getHighScore(), 0, 13);
+		}
 	}
 	else if (inGame == dead) { //Otherwise tell them what has happened and how to reset.
 		display->drawString("You died, to", 2, 3);
@@ -86,6 +113,25 @@ void GameStateJump::render(Screen *display) {
 		display->drawString("press P", 4, 5);
 		display->drawString("Or press Q", 2, 6);
 		display->drawString("to quit.", 4, 7);
+		display->drawString(getGameScore(), 2, 8);
+		display->drawString(getHighScore(), 2, 9);
 	}
 	//cout << "Render" << endl;
+}
+
+//Source https://www.systutorials.com/131/convert-string-to-int-and-reverse/
+string GameStateJump::getGameScore()
+{
+	std::stringstream ss;
+	ss << "Score: ";
+	ss << gameScore;
+	return ss.str();
+}
+
+string GameStateJump::getHighScore()
+{
+	std::stringstream ss;
+	ss << "Score: ";
+	ss << highScore;
+	return ss.str();
 }
