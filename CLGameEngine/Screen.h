@@ -19,9 +19,11 @@ using namespace std;
 
 const int XSIZE = 15;
 const int YSIZE = 15;
+//BLANK is treated as transparency in textures. The char will be ignored and any previously rendered char will still show.
 const string BLANK = " ";
-//const string HOLE = "?";
+//EMPTY is treated as blackness in textures. It will override anythign prevously drawn to that position but will not be rendered to the screen itsself.
 const char EMPTY = '?';
+//NEW is a simple helper string to easily call on a new line.
 const string NEW = "\n";
 
 //A class representing a screen drawn to the termianl.

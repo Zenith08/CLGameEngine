@@ -5,6 +5,11 @@
 
 GameObjectDodgeball::GameObjectDodgeball()
 {
+	GameObjectDodgeball(false);
+}
+
+GameObjectDodgeball::GameObjectDodgeball(bool easy)
+{
 	//A rither  painful way to configure the texture.
 	for (int x = 0; x < 5; x++) {
 		for (int y = 0; y < 5; y++) {
@@ -12,33 +17,35 @@ GameObjectDodgeball::GameObjectDodgeball()
 		}
 	}
 
-	//Code for 2x2 dodgeball
-	/*texture[0][0] = '/';
-	texture[1][0] = '\\';
-	texture[0][1] = '\\';
-	texture[1][1] = '/';
+	if (easy) { //Easy Mode
+		texture[0][0] = '/';
+		texture[1][0] = '\\';
+		texture[0][1] = '\\';
+		texture[1][1] = '/';
 
-	position = { 5, 5 };
-	velocity = { 1, -1 };
-	boundingBox = CollisionBox(position.x, position.y, 2, 2); */
+		position = { 5, 5 };
+		velocity = { 1, -1 };
+		boundingBox = CollisionBox(position.x, position.y, 2, 2);
+	}
+	else { //Hard Mode.
+		texture[0][0] = '/';
+		texture[1][0] = '-';
+		texture[2][0] = '\\';
 
-	//Code for 3x3 dodgeball
-	texture[0][0] = '/';
-	texture[1][0] = '-';
-	texture[2][0] = '\\';
-	
-	texture[0][1] = '|';
-	texture[1][1] = '@';
-	texture[2][1] = '|';
+		texture[0][1] = '|';
+		texture[1][1] = '@';
+		texture[2][1] = '|';
 
-	texture[0][2] = '\\';
-	texture[1][2] = '-';
-	texture[2][2] = '/';
+		texture[0][2] = '\\';
+		texture[1][2] = '-';
+		texture[2][2] = '/';
+		boundingBox = CollisionBox(position.x, position.y, 3, 3);
+	}
 
+	//Common for both modes.
 	//Set an initial position, velocity, and create the bounding box for collisions.
 	position = { 5, 5 };
 	velocity = { 1, -1 };
-	boundingBox = CollisionBox(position.x, position.y, 3, 3);
 }
 
 void GameObjectDodgeball::tick(double delta)

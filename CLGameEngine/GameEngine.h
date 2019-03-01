@@ -4,7 +4,7 @@
 #include "Screen.h"
 
 //Enabling debug mode will print info like fps, frame time, and key presses to the screen but will also add lag.
-//#define DEBUG_MODE
+#define DEBUG_MODE
 
 namespace game {
 	//The game loop is the main function where every frame state#tick and state#rendered will be called from the code.
@@ -25,6 +25,6 @@ namespace game {
 	extern GameState *state; // = &jumper;
 	//The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 	extern Screen display; // = Screen();
-
+	//Gets the current GameState in use. This allows any class to have access to the currently running game state.
 	GameState *getCurrentState();
 }

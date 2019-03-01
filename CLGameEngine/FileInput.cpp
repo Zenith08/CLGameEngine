@@ -4,43 +4,42 @@
 #include <cstring>
 #include <sstream>
 
-map<string, char[5][5]> file::textures = map<string, char[5][5]>();
-
-void file::loadTextures(string file)
-{
-
-}
-
 vector<int> file::loadScores(string file)
 {
+	//Tell the user/developer this is happening.
 	cout << "Loading score file " << file << endl;
+	//Create objects to make looping easier.
 	ifstream scFile;
 	scFile.open(file);
 	string line;
 	vector<int> out = vector<int>();
+
 	//Run the file.
-	while (getline(scFile, line)) {
+	while (getline(scFile, line)) { //Loop for each line.
 		cout << "Line read " << line << endl;
-		stringstream lineIn(line);
+		stringstream lineIn(line); //A stringstream makes getting the int value from the string possible.
 		int buff;
-		lineIn >> buff;
-		out.push_back(buff);
+		lineIn >> buff; //Getting the int value from the string.
+		out.push_back(buff); //Then store it into the array slot.
 	}
 	//Then close it.
 	scFile.close();
-	cout << "File loaded successfuly." << endl;
+	cout << "File loaded successfuly." << endl; //And tell us it worked.
 	return out;
 }
 
 void file::saveScores(string file, vector<int> scores)
 {
+	//Tell the user/developer what file is being saved.
 	cout << "Saving score file " << file << endl;
+	//Create the file object and open it
 	ofstream scFile;
 	scFile.open(file);
+	//For each score we are told to write
 	for (unsigned int i = 0; i < scores.size(); i++) {
-		scFile << scores[i] << "\n";
+		scFile << scores[i] << "\n"; //Write it to a new line in the file.
 	}
-	scFile << endl;
-	scFile.close();
+	scFile << endl; //The endl causes the buffer to be flushed.
+	scFile.close(); //Then close the file and tell the user.
 	cout << "File saved successfuly." << endl;
 }

@@ -17,6 +17,9 @@
 #include "GameObjectBall.h"
 #include "GameObjectDodgeball.h"
 
+#define EASY true
+#define HARD false
+
 //An example derrived game state.
 class GameStateJump : public GameState {
 public:
@@ -38,8 +41,11 @@ public:
 
 	const int playing = 0;
 	const int dead = 1;
+	const int difficultySelect = 2;
 
-	int inGame = playing;
+	int inGame = difficultySelect;
+
+	bool difficulty = HARD;
 
 	//A default constructor lets us initalize everything.
 	GameStateJump();
@@ -49,7 +55,9 @@ public:
 
 	int gameScore;
 	int highScore;
+	int easyHighScore;
 
+	//Helper methods to convert the scores to strings which can be drawn to the screen effectivly.
 	string getGameScore();
 	string getHighScore();
 };

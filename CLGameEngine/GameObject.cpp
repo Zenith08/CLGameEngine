@@ -10,6 +10,7 @@
 
 GameObject::GameObject()
 {
+	//Avoids null errors by defining default values.
 	boundingBox = CollisionBox();
 	position = { 0, 0 };
 }

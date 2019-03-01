@@ -8,10 +8,9 @@
 using namespace std;
 
 namespace file {
-	extern map<string, char[5][5]> textures;
-	extern map<string, string> scores;
 
-	void loadTextures(string file);
+	//Loads the specified file and stores each line into the vector<int>. Useful to easily load high scores.
 	vector<int> loadScores(string file);
+	//Saves the vector<int> to the specified file. Useful to save high scores.
 	void saveScores(string file, vector<int> scores);
 }

@@ -26,8 +26,8 @@ public:
 	void setCoordinates(int newX, int newY); //Allows moving the box in two dimensional space.
 	void setDimensions(int newWidth, int newHeight); //Allows resizing the boxes horizontal and vertical dimensions.
 
-	int getRightEdge();
-	int getBottomEdge();
+	int getRightEdge(); //Returns the position of the right edge of the box calculated by x+width.
+	int getBottomEdge(); //Returns the position of the bottom edge of the box calculated by y+height.
 };
 //All functions for CollisionBox which are not class specific.
 namespace Collisions {

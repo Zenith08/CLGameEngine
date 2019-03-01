@@ -28,7 +28,7 @@ GameStateJump::GameStateJump() : GameState() {
 	wallRight2 = GameObjectWall(11, 6, 1, 5);
 
 	ball = GameObjectBall();
-	dodgeball = GameObjectDodgeball();
+	dodgeball = GameObjectDodgeball(false);
 	
 	//Then add them to the game state. addStaticCollider() also calls addGameObject().
 	addStaticCollider(&wallTop1);
@@ -49,10 +49,16 @@ GameStateJump::GameStateJump() : GameState() {
 	vector<int> scores = file::loadScores("dodgeball.dat");
 	if (scores.size() > 0) {
 		highScore = scores[0];
+		if (scores.size() > 1) {
+			easyHighScore = scores[1];
+		}
 	}
 	else {
+		scores.push_back(0);
+		scores.push_back(0);
 		file::saveScores("dodgeball.dat", scores);
 		highScore = 0;
+		easyHighScore = 0;
 	}
 }
 
@@ -65,12 +71,25 @@ void GameStateJump::tick(double delta) {
 		//Then check if the player has died.
 		if (Collisions::overlapping(dodgeball.boundingBox, ball.boundingBox)) {
 			inGame = dead; //If the player has died, indicate that to the rest of the code.
-			if (gameScore > highScore) {
-				highScore = gameScore;
-				//Save the new high score
-				vector<int> score = vector<int>();
-				score.push_back(highScore);
-				file::saveScores("dodgeball.dat", score);
+			if (difficulty == HARD) {
+				if (gameScore > highScore) {
+					highScore = gameScore;
+					//Save the new high score
+					vector<int> score = vector<int>();
+					score.push_back(highScore);
+					score.push_back(easyHighScore);
+					file::saveScores("dodgeball.dat", score);
+				}
+			}
+			else if (difficulty == EASY) {
+				if (gameScore > easyHighScore) {
+					easyHighScore = gameScore;
+					//Save the new high score
+					vector<int> score = vector<int>();
+					score.push_back(highScore);
+					score.push_back(easyHighScore);
+					file::saveScores("dodgeball.dat", score);
+				}
 			}
 		}
 		else {
@@ -91,6 +110,20 @@ void GameStateJump::tick(double delta) {
 			dodgeball.position.y = 5;
 			dodgeball.velocity.x = 1;
 			inGame = playing;
+		}
+	}
+	else if (inGame == difficultySelect) {
+		if (input::getPressed() == 104) {
+			difficulty = HARD;
+			inGame = playing;
+			input::usedPress();
+			dodgeball = GameObjectDodgeball(difficulty);
+		}
+		else if (input::getPressed() == 101) {
+			difficulty = EASY;
+			inGame = playing;
+			input::usedPress();
+			dodgeball = GameObjectDodgeball(difficulty);
 		}
 	}
 	//cout << "Tick" << endl;
@@ -116,6 +149,14 @@ void GameStateJump::render(Screen *display) {
 		display->drawString(getGameScore(), 2, 8);
 		display->drawString(getHighScore(), 2, 9);
 	}
+	else if (inGame == difficultySelect) {
+		display->drawString("Choose a", 2, 0);
+		display->drawString("difficulty:", 3, 0);
+		display->drawString("Press E for", 2, 4);
+		display->drawString("easy.", 2, 5);
+		display->drawString("Press H for", 2, 6);
+		display->drawString("hard.", 2, 7);
+	}
 	//cout << "Render" << endl;
 }
 
@@ -127,11 +168,20 @@ string GameStateJump::getGameScore()
 	ss << gameScore;
 	return ss.str();
 }
-
+//Gets the high score at the current difficulty level.
+//Then converts it into a displayable string.
 string GameStateJump::getHighScore()
 {
 	std::stringstream ss;
 	ss << "Score: ";
-	ss << highScore;
+	if (difficulty == HARD) {
+		ss << highScore;
+		//cout << "Diff = hard \n";
+	}
+	else if (difficulty == EASY) {
+		ss << easyHighScore;
+		//cout << "Diff = easy \n";
+	}
+	
 	return ss.str();
 }

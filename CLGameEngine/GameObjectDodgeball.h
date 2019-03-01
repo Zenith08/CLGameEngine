@@ -5,8 +5,12 @@ class GameObjectDodgeball :
 	public GameObject
 {
 public:
-	//A constructor to initialize basic variables and the texture.
+	//In easy mode, the ball is 2x2, in hard mode, the ball is 3x3.
+	bool easyMode = false;
+	//A default constructor which starts the ball in hard mode.
 	GameObjectDodgeball();
+	//A constructor to initialize basic variables and the texture.
+	GameObjectDodgeball(bool easy);
 	//Slows the ball down by only moving it once every 3rd frame. Might be adjusted for gameplay balance.
 	double timeTilMove = 100;
 	//The velocity the ball will move at stored as a 2 component vector.

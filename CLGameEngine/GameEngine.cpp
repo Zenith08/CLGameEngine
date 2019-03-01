@@ -17,8 +17,11 @@ GameState *game::state; // = &game::jumper;
 //The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 Screen game::display = Screen();
 
+//Whether or not the player wants to keep playing.
+//Setting this to false exits the game in a controlled way.
 bool game::contPlaying = true;
 
+//The main loop of the game where a GameState recievs ticks and render calls.
 void game::gameLoop()
 {
 	//Initalize time variables used to maintain consistent frame rates.
@@ -30,6 +33,7 @@ void game::gameLoop()
 	last = chrono::high_resolution_clock::now(); //Initializes the time of last frame to now. Just to have a base value, it should not matter.
 	deltaTime = current - last; //Initializes delta time, should not matter.
 
+	//Setting this to true before starting the loop makes sense. That way the loop actually runs.
 	contPlaying = true;
 #
 	while (contPlaying) {

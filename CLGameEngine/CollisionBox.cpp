@@ -33,12 +33,12 @@ void CollisionBox::setDimensions(int newWidth, int newHeight) {
 	width = newWidth;
 	height = newHeight;
 }
-
+//Provides easy access to the location of the right edge of the box.
 int CollisionBox::getRightEdge()
 {
 	return x+width;
 }
-
+//Provides easy access to the location of the right edge of the box.
 int CollisionBox::getBottomEdge()
 {
 	return y+height;
