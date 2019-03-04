@@ -17,18 +17,16 @@
 #include "GameStateJump.h"
 #include "GameInput.h"
 #include "GameEngine.h"
-#include "IGSSpaceInvaders.h"
 
 using namespace Collisions;
 using namespace std;
 
 GameStateJump jump = GameStateJump();
-IGSSpaceInvaders space = IGSSpaceInvaders();
 
 //This is for testing or built in game states. In theory, a user would have their own main() method to run and simply call gameLoop() in this class.
 int main(int argc, const char * argv[]) {
 	//Set the running state to the default state.
-	game::state = &space;
+	game::state = &jump;
 	//Starts the main game loop with whatever game state has been configured.
 	game::gameLoop();
 	//Ends the game and returns no error code.

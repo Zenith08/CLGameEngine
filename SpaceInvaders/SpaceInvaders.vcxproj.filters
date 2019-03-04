@@ -21,6 +21,12 @@
     <ClInclude Include="GSSpaceInvaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SIPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SIGameObjectRock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -30,6 +36,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GSSpaceInvaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SIPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SIGameObjectRock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

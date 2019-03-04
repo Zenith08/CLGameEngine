@@ -27,7 +27,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -162,7 +162,6 @@
     <ClInclude Include="GameObjectWall.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateJump.h" />
-    <ClInclude Include="IGSSpaceInvaders.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Screen.h" />
   </ItemGroup>
@@ -178,7 +177,6 @@
     <ClCompile Include="GameObjectWall.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateJump.cpp" />
-    <ClCompile Include="IGSSpaceInvaders.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

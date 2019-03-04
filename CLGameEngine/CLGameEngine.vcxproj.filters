@@ -54,9 +54,6 @@
     <ClInclude Include="ExecControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IGSSpaceInvaders.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -96,9 +93,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IGSSpaceInvaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
