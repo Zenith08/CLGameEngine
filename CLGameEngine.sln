@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLGameEngine", "CLGameEngine\CLGameEngine.vcxproj", "{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SpaceInvaders", "SpaceInvaders\SpaceInvaders.vcxproj", "{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1} = {DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +26,14 @@ Global
 		{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}.Release|x64.Build.0 = Release|x64
 		{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}.Release|x86.ActiveCfg = Release|Win32
 		{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}.Release|x86.Build.0 = Release|Win32
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Debug|x64.ActiveCfg = Debug|x64
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Debug|x64.Build.0 = Debug|x64
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Debug|x86.ActiveCfg = Debug|Win32
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Debug|x86.Build.0 = Debug|Win32
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Release|x64.ActiveCfg = Release|x64
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Release|x64.Build.0 = Release|x64
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Release|x86.ActiveCfg = Release|Win32
+		{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

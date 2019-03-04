@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{DB241845-FE2B-49BC-8F23-CC20E9AF4CA1}</ProjectGuid>
+    <ProjectGuid>{58600DD1-59CE-4947-BA66-ECB2AD7D2C24}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CLGameEngine</RootNamespace>
+    <RootNamespace>SpaceInvaders</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -84,17 +84,20 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\School\Programming Level 2\Programming-KaidenRichardson\CPlusPlus\Windows\CLAnimator\CLGameEngine\CLGameEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\School\Programming Level 2\Programming-KaidenRichardson\CPlusPlus\Windows\CLAnimator\CLGameEngine\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -151,41 +154,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CollisionBox.h" />
-    <ClInclude Include="ExecControl.h" />
-    <ClInclude Include="FileInput.h" />
-    <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="GameInput.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameObjectBall.h" />
-    <ClInclude Include="GameObjectDodgeball.h" />
-    <ClInclude Include="GameObjectWall.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="GameStateJump.h" />
-    <ClInclude Include="IGSSpaceInvaders.h" />
+    <ClInclude Include="GSSpaceInvaders.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Screen.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CLGameEngine.cpp" />
-    <ClCompile Include="CollisionBox.cpp" />
-    <ClCompile Include="FileInput.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="GameInput.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameObjectBall.cpp" />
-    <ClCompile Include="GameObjectDodgeball.cpp" />
-    <ClCompile Include="GameObjectWall.cpp" />
-    <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="GameStateJump.cpp" />
-    <ClCompile Include="IGSSpaceInvaders.cpp" />
+    <ClCompile Include="GSSpaceInvaders.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="SpaceInvaders.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CLGameEngine\CLGameEngine.vcxproj">
+      <Project>{db241845-fe2b-49bc-8f23-cc20e9af4ca1}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
