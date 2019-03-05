@@ -27,6 +27,9 @@
     <ClInclude Include="SIGameObjectRock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameObjectShot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SIGameObjectRock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectShot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

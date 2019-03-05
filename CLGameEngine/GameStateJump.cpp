@@ -45,6 +45,8 @@ GameStateJump::GameStateJump() : GameState() {
 	addGameObject(&dodgeball);
 	
 	gameScore = 0;
+	easyHighScore = 0;
+	highScore = 0;
 	
 	vector<int> scores = file::loadScores("dodgeball.dat");
 	if (scores.size() > 0) {

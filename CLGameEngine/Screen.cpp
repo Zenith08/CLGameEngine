@@ -50,7 +50,7 @@ void Screen::draw(char texture[5][5], int x, int y) {
 void Screen::drawString(string print, int x, int y)
 {
 	if (y < YSIZE && y >= 0) { //Make sure we are within the array y axis.
-		for (int xLoop = 0; xLoop < print.length(); xLoop++) { //For each character in the string
+		for (unsigned int xLoop = 0; xLoop < print.length(); xLoop++) { //For each character in the string
 			if (x + xLoop < XSIZE) { //Make sure it fits on the x axis of the screen.
 				display[x + xLoop][y] = print[xLoop]; //Then draw it to the screen.
 			}

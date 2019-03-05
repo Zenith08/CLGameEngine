@@ -11,20 +11,39 @@ GSSpaceInvaders::GSSpaceInvaders():GameState()
 	right2 = GameObjectWall(14, 5, 1, 5);
 	right3 = GameObjectWall(14, 10, 1, 5);
 
+	player = SIPlayer();
+
 	addStaticCollider(&left1);
 	addStaticCollider(&left2);
 	addStaticCollider(&left3);
 	addStaticCollider(&right1);
 	addStaticCollider(&right2);
 	addStaticCollider(&right3);
+
+	addGameObject(&player);
 }
 
 void GSSpaceInvaders::tick(double delta)
 {
+	for (int i = 0; i < NUM_SHOTS; i++) {
+		shots[i].tick(delta);
+	}
 	GameState::tick(delta);
 }
 
 void GSSpaceInvaders::render(Screen * display)
 {
+	for (int i = 0; i < NUM_SHOTS; i++) {
+		shots[i].render(display);
+	}
 	GameState::render(display);
+}
+
+void GSSpaceInvaders::addShot(GameObjectShot shot)
+{
+	shots[numShots] = shot;
+	numShots++;
+	if (numShots >= NUM_SHOTS) {
+		numShots = 0;
+	}
 }

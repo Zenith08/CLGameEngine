@@ -39,6 +39,9 @@ public:
 	//May be overridden to allow multiple / changing textures.
 	//Param Screen - a reffernce to the display which will be used to draw the display.
 	virtual void render(Screen *display);
+
+	//TODO comment
+	void clearTexture();
 };
 
 #endif /* GameObject_hpp */

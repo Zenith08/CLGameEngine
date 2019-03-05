@@ -82,7 +82,7 @@ void GameObjectDodgeball::tick(double delta)
 				}
 			}
 
-			while (velocity.x == 0 && velocity.x == 0) {
+			while (velocity.x == 0 && velocity.y == 0) {
 				velocity.x = roll(-2, 2);
 				velocity.y = roll(-2, 2);
 			}
@@ -102,9 +102,11 @@ int GameObjectDodgeball::roll(int min, int max)
 {
 	// x is in [0,1[
 	double x = rand() / static_cast<double>(RAND_MAX + 1);
+	double minBuff = min;
+	double maxBuff = max;
 
 	// [0,1[ * (max - min) + min is in [min,max[
-	int that = min + static_cast<int>(x * (max - min));
+	int that = min + static_cast<int>(x * (maxBuff - minBuff));
 
 	return that;
 }

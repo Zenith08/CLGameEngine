@@ -24,3 +24,12 @@ void GameObject::render(Screen *display) {
 	//Draw the texture to the screen at the current position.
 	display->draw(texture, position.x, position.y);
 }
+
+void GameObject::clearTexture()
+{
+	for (int x = 0; x < 5; x++) {
+		for (int y = 0; y < 5; y++) {
+			texture[x][y] = ' ';
+		}
+	}
+}

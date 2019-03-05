@@ -10,10 +10,10 @@ GSSpaceInvaders space = GSSpaceInvaders();
 
 int main()
 {
-	std::cout << "Space Invaders.";
+	std::cout << "Space Invaders. \n";
 	game::state = &space;
 	game::gameLoop();
-	std::cout << "End Space Invaders.";
+	std::cout << "End Space Invaders. \n";
 
 	return 0;
 }

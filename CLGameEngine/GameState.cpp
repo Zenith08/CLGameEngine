@@ -9,7 +9,7 @@
 #include "GameState.h"
 
 GameState::GameState() {
-	
+
 }
 
 void GameState::tick(double delta) {
