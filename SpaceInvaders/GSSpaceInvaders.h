@@ -6,6 +6,7 @@
 #include "GObjSpaceInvader.h"
 
 #define NUM_SHOTS 32
+#define NUM_INVADERS 12
 
 class GSSpaceInvaders :
 	public GameState
@@ -15,7 +16,8 @@ public:
 	GameObjectShot shots[NUM_SHOTS] = {};
 	GameObjectShot *activeShots[NUM_SHOTS] = {};
 
-	GObjSpaceInvader testInvader;
+	GObjSpaceInvader invaders[NUM_INVADERS] = {};
+	GObjSpaceInvader *activeInvaders[NUM_INVADERS] = {};
 
 	GameObjectWall left1;
 	GameObjectWall left2;

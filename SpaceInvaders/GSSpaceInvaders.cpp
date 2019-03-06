@@ -22,8 +22,22 @@ GSSpaceInvaders::GSSpaceInvaders():GameState()
 
 	addGameObject(&player);
 
-	testInvader = GObjSpaceInvader();
-	addGameObject(&testInvader);
+	for (int i = 0; i < NUM_INVADERS; i++) {
+		if (i < 4) {
+			invaders[i] = GObjSpaceInvader({ i, 0 });
+			activeInvaders[i] = &invaders[i];
+		}
+		else if (i >= 4 && i < 8) {
+			invaders[i] = GObjSpaceInvader({ i-3, 1 });
+			activeInvaders[i] = &invaders[i];
+		}
+		else if (i >= 8) {
+			invaders[i] = GObjSpaceInvader({ i - 7, 2 });
+			activeInvaders[i] = &invaders[i];
+		}
+
+		addGameObject(&invaders[i]);
+	}
 }
 
 void GSSpaceInvaders::tick(double delta)

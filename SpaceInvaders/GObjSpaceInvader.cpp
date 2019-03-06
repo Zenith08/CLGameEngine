@@ -2,9 +2,8 @@
 #include "GObjSpaceInvader.h"
 #include <iostream>
 
-GObjSpaceInvader::GObjSpaceInvader()
+GObjSpaceInvader::GObjSpaceInvader(Vector2 initial)
 {
-	std::cout << "Create invader \n";
 	clearTexture();
 	texture[0][0] = '(';
 	texture[1][0] = '-';
@@ -36,8 +35,13 @@ GObjSpaceInvader::GObjSpaceInvader()
 	animR[0][1] = '\\';
 	animR[2][1] = '\\';
 
-	position = {3, 3};
+	position = { initial.x, initial.y };
 	boundingBox = CollisionBox(position.x, position.y, 3, 2);
+}
+
+GObjSpaceInvader::GObjSpaceInvader()
+{
+	GObjSpaceInvader({ -5, -5 });
 }
 
 void GObjSpaceInvader::tick(double delta)

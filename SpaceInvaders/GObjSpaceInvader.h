@@ -12,6 +12,7 @@ class GObjSpaceInvader :
 
 public:
 	GObjSpaceInvader();
+	GObjSpaceInvader(Vector2 initial);
 	void tick(double delta);
 	void render(Screen *display);
 };
