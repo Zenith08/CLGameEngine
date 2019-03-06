@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "GSSpaceInvaders.h"
-
+#include <iostream>
 
 GSSpaceInvaders::GSSpaceInvaders():GameState()
 {
@@ -21,12 +21,17 @@ GSSpaceInvaders::GSSpaceInvaders():GameState()
 	addStaticCollider(&right3);
 
 	addGameObject(&player);
+
+	testInvader = GObjSpaceInvader();
+	addGameObject(&testInvader);
 }
 
 void GSSpaceInvaders::tick(double delta)
 {
 	for (int i = 0; i < NUM_SHOTS; i++) {
-		shots[i].tick(delta);
+		if (activeShots[i]) {
+			activeShots[i]->tick(delta);
+		}
 	}
 	GameState::tick(delta);
 }
@@ -34,7 +39,9 @@ void GSSpaceInvaders::tick(double delta)
 void GSSpaceInvaders::render(Screen * display)
 {
 	for (int i = 0; i < NUM_SHOTS; i++) {
-		shots[i].render(display);
+		if (activeShots[i]) {
+			activeShots[i]->render(display);
+		}
 	}
 	GameState::render(display);
 }
@@ -42,8 +49,11 @@ void GSSpaceInvaders::render(Screen * display)
 void GSSpaceInvaders::addShot(GameObjectShot shot)
 {
 	shots[numShots] = shot;
+	activeShots[numShots] = &shots[numShots];
 	numShots++;
 	if (numShots >= NUM_SHOTS) {
 		numShots = 0;
 	}
 }
+
+

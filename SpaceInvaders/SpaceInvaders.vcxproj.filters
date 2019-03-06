@@ -24,10 +24,10 @@
     <ClInclude Include="SIPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SIGameObjectRock.h">
+    <ClInclude Include="GameObjectShot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectShot.h">
+    <ClInclude Include="GObjSpaceInvader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,10 +44,10 @@
     <ClCompile Include="SIPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SIGameObjectRock.cpp">
+    <ClCompile Include="GameObjectShot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectShot.cpp">
+    <ClCompile Include="GObjSpaceInvader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

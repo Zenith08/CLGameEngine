@@ -7,15 +7,30 @@
 #include "GSSpaceInvaders.h"
 
 GSSpaceInvaders space = GSSpaceInvaders();
+GameStateJump jump = GameStateJump();
+
+void spaceInvaders();
+void dodgeball();
 
 int main()
 {
+	spaceInvaders();
+	//dodgeball();
+	return 0;
+}
+
+void spaceInvaders() {
 	std::cout << "Space Invaders. \n";
 	game::state = &space;
 	game::gameLoop();
 	std::cout << "End Space Invaders. \n";
+}
 
-	return 0;
+void dodgeball() {
+	std::cout << "Dodgeball. \n";
+	game::state = &jump;
+	game::gameLoop();
+	std::cout << "End Dodgeball. \n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

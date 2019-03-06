@@ -3,14 +3,19 @@
 #include "Screen.h"
 #include "GameObjectWall.h"
 #include "SIPlayer.h"
+#include "GObjSpaceInvader.h"
+
+#define NUM_SHOTS 32
 
 class GSSpaceInvaders :
 	public GameState
 {
 public:
-	const int NUM_SHOTS = 32;
 	int numShots = 0;
-	GameObjectShot shots[NUM_SHOTS];
+	GameObjectShot shots[NUM_SHOTS] = {};
+	GameObjectShot *activeShots[NUM_SHOTS] = {};
+
+	GObjSpaceInvader testInvader;
 
 	GameObjectWall left1;
 	GameObjectWall left2;

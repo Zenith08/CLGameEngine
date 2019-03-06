@@ -31,10 +31,10 @@ void Screen::draw(char texture[5][5], int x, int y) {
 
 	//Loop through the texture which has a known width and height of 5.
 	for (int xLoop = 0; xLoop < 5; xLoop++) {
-		if (xLoop + x < XSIZE) { //If this is false, it means the texture wants to draw onto a line that does not exist on the display. Therefore ignore it.
+		if (xLoop + x < XSIZE && xLoop+x >= 0) { //If this is false, it means the texture wants to draw onto a line that does not exist on the display. Therefore ignore it.
 			for (int yLoop = 0; yLoop < 5; yLoop++) {
 				//cout << "Texture " << xLoop << ", " << yLoop << " equals " << texture[yLoop][xLoop] << endl;
-				if (y + yLoop < YSIZE) { //If this is false, it means the texture wants to draw onto a row that does not exist on the display. Therefore ignore it.
+				if (y + yLoop < YSIZE && yLoop+y >= 0) { //If this is false, it means the texture wants to draw onto a row that does not exist on the display. Therefore ignore it.
 					if (texture[xLoop][yLoop] != ' ') { //This lets ' ' to be treated as transparent. It will not override any character underneath it. '?' Will also be transparent because it is not rendered.
 						display[x + xLoop][y + yLoop] = texture[xLoop][yLoop]; //If the character is going to be displayed, this will map it to the screen.
 					}

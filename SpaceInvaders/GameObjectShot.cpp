@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameObjectShot.h"
+#include <iostream>
 
 
 GameObjectShot::GameObjectShot()
