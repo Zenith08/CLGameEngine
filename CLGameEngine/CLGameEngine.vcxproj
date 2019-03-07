@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CollisionBox.h" />
-    <ClInclude Include="ExecControl.h" />
     <ClInclude Include="FileInput.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameInput.h" />

@@ -51,9 +51,6 @@
     <ClInclude Include="FileInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExecControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -36,16 +36,17 @@ void game::gameLoop()
 	//Setting this to true before starting the loop makes sense. That way the loop actually runs.
 	contPlaying = true;
 #
+#ifdef DEBUG_MODE
 	//DEBUG
 	int frames = 0;
+#endif
 
 	while (contPlaying) {
 
-		frames++;
-		cout << "Frame " << frames << "\n";
-
 		//Print frame rate and frametime for testing purposes to make sure the delay is working properly.
 #ifdef DEBUG_MODE
+		frames++;
+		cout << "Frame " << frames << "\n";
 		cout << "FPS: " << 1000 / deltaTime.count() << "\n" << "Delta: " << deltaTime.count() << "\n" << "Pressed: " << input::getPressed() << "\n";
 #endif
 		//Ticks the current game state for logic updates.

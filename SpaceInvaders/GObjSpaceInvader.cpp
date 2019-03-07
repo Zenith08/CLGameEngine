@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GObjSpaceInvader.h"
+#include "GameEngine.h"
 #include <iostream>
 
 GObjSpaceInvader::GObjSpaceInvader(Vector2 initial)
@@ -46,27 +47,70 @@ GObjSpaceInvader::GObjSpaceInvader()
 
 void GObjSpaceInvader::tick(double delta)
 {
-	time--;
-	if (time == 0) {
-		time = delays;
-		currentFrame++;
-		if (currentFrame > 3) {
-			currentFrame = 0;
+	//If we are dead none of this matters.
+	if (alive) {
+		//Time delay slows everything down.
+		time--;
+		if (time == 0) {
+			time = delays;
+			//Some quick animation handling.
+			currentFrame++;
+			if (currentFrame > 3) {
+				currentFrame = 0;
+			}
+
+			//End animation stuff.
+
+			//Starts movement logic.
+			if (moveDirection == LEFT) { //If we are going left
+				boundingBox.x--; //Try to move left
+				if (game::getCurrentState()->overlapsStatic(this)) { //If we are hitting a wall
+					position.y++; //Move down instead
+					moveDirection = RIGHT; //And move the other way.
+				}
+				else { //If we can move left
+					position.x--; //Then do it.
+				}
+			}
+			else if (moveDirection == RIGHT) { //Equivilent to else but shows more clarity.
+				boundingBox.x++; //Try to move right
+				if (game::getCurrentState()->overlapsStatic(this)) { //If we are hitting a wall
+					position.y++; //Move down instead
+					moveDirection = LEFT; //And move the other way.
+				}
+				else { //If we can move left
+					position.x++; //Then do it.
+				}
+			}
 		}
 	}
-
+	//Updates the bounding box coordinates to the current position.
 	GameObject::tick(delta);
 }
 
 void GObjSpaceInvader::render(Screen * display)
 {
-	if (currentFrame == 0 || currentFrame == 2) {
-		display->draw(texture, position.x, position.y);
+	if (alive) {
+		if (currentFrame == 0 || currentFrame == 2) {
+			display->draw(texture, position.x, position.y);
+		}
+		else if (currentFrame == 1) {
+			display->draw(animL, position.x, position.y);
+		}
+		else if (currentFrame == 3) {
+			display->draw(animR, position.x, position.y);
+		}
 	}
-	else if (currentFrame == 1) {
-		display->draw(animL, position.x, position.y);
-	}
-	else if (currentFrame == 3) {
-		display->draw(animR, position.x, position.y);
-	}
+}
+
+bool GObjSpaceInvader::isLiving()
+{
+	return alive;
+}
+
+void GObjSpaceInvader::kill()
+{
+	alive = false;
+	position.x = -5;
+	position.y = -5;
 }

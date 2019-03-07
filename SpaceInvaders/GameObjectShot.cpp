@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "GameObjectShot.h"
+#include "GSSpaceInvaders.h"
+#include "GameEngine.h"
 #include <iostream>
 
 
@@ -32,7 +34,13 @@ void GameObjectShot::tick(double delta)
 			position.y--;
 		}
 
-		GameObject::tick(delta);
+		GameObject::tick(delta); //Moves collision box.
+
+		GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
+
+		if (stateInvaders->collideInvaders(this)) {
+			position.y = -1; //Effectivly kills this shot.
+		}
 	}
 }
 

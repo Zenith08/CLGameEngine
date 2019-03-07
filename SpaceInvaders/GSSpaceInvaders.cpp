@@ -21,33 +21,36 @@ GSSpaceInvaders::GSSpaceInvaders():GameState()
 	addStaticCollider(&right3);
 
 	addGameObject(&player);
-
-	for (int i = 0; i < NUM_INVADERS; i++) {
-		if (i < 4) {
-			invaders[i] = GObjSpaceInvader({ i, 0 });
-			activeInvaders[i] = &invaders[i];
+	
+	for (int y = 0; y < 3; y++) {
+		for (int x = 0; x < 4; x++) { //This loops 12 times and places 4 invaders on three rows.
+			invaders[y * 4 + x] = GObjSpaceInvader( {1+x*3, y*2} );
+			activeInvaders[y * 4 + x] = &invaders[y * 4 + x];
+			addGameObject(&invaders[y * 4 + x]);
 		}
-		else if (i >= 4 && i < 8) {
-			invaders[i] = GObjSpaceInvader({ i-3, 1 });
-			activeInvaders[i] = &invaders[i];
-		}
-		else if (i >= 8) {
-			invaders[i] = GObjSpaceInvader({ i - 7, 2 });
-			activeInvaders[i] = &invaders[i];
-		}
-
-		addGameObject(&invaders[i]);
 	}
 }
 
 void GSSpaceInvaders::tick(double delta)
 {
-	for (int i = 0; i < NUM_SHOTS; i++) {
-		if (activeShots[i]) {
-			activeShots[i]->tick(delta);
+	if (playerState == ALIVE) {
+		for (int i = 0; i < NUM_SHOTS; i++) {
+			if (activeShots[i]) {
+				activeShots[i]->tick(delta);
+			}
 		}
+
+		//Check if an invader has reached the end.
+		for (int i = 0; i < NUM_INVADERS; i++) {
+			if (activeInvaders[i]) {
+				//cout << "Invader position " << activeInvaders[i]->position.y << " and living = " << activeInvaders[i]->isLiving() << "\n";
+				if (activeInvaders[i]->isLiving() && activeInvaders[i]->position.y >= 12) {
+					playerState = DEAD;
+				}
+			}
+		}
+		GameState::tick(delta);
 	}
-	GameState::tick(delta);
 }
 
 void GSSpaceInvaders::render(Screen * display)
@@ -58,6 +61,10 @@ void GSSpaceInvaders::render(Screen * display)
 		}
 	}
 	GameState::render(display);
+
+	if (playerState == DEAD) {
+		display->drawString("Game Over!", 3, 3);
+	}
 }
 
 void GSSpaceInvaders::addShot(GameObjectShot shot)
@@ -68,6 +75,21 @@ void GSSpaceInvaders::addShot(GameObjectShot shot)
 	if (numShots >= NUM_SHOTS) {
 		numShots = 0;
 	}
+}
+
+bool GSSpaceInvaders::collideInvaders(GameObjectShot *shot)
+{
+	for (int i = 0; i < NUM_INVADERS; i++) {
+		if (activeInvaders[i]) {
+			if (activeInvaders[i]->isLiving()) {
+				if (Collisions::overlapping(activeInvaders[i]->boundingBox, shot->boundingBox)) {
+					activeInvaders[i]->kill();
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 

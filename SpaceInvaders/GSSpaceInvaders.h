@@ -7,12 +7,16 @@
 
 #define NUM_SHOTS 32
 #define NUM_INVADERS 12
+#define ALIVE 0
+#define DEAD 1
 
 class GSSpaceInvaders :
 	public GameState
 {
 public:
 	int numShots = 0;
+	int playerState = ALIVE;
+
 	GameObjectShot shots[NUM_SHOTS] = {};
 	GameObjectShot *activeShots[NUM_SHOTS] = {};
 
@@ -32,4 +36,5 @@ public:
 	void tick(double delta);
 	void render(Screen *display);
 	void addShot(GameObjectShot shot);
+	bool collideInvaders(GameObjectShot *shot);
 };
