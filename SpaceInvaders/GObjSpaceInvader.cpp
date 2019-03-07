@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "GObjSpaceInvader.h"
 #include "GameEngine.h"
+#include "GSSpaceInvaders.h"
+#include "GameObjectShot.h"
 #include <iostream>
+#include <stdlib.h>
 
 GObjSpaceInvader::GObjSpaceInvader(Vector2 initial)
 {
@@ -81,6 +84,13 @@ void GObjSpaceInvader::tick(double delta)
 				else { //If we can move left
 					position.x++; //Then do it.
 				}
+			}
+			//End movement logic
+
+			//Starts shooting logic
+			if (std::rand() % 100 < shooting) {
+				GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
+				stateInvaders->addShot(GameObjectShot(1, { position.x + 1, position.y }, INVADER));
 			}
 		}
 	}

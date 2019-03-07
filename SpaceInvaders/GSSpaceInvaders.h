@@ -37,4 +37,5 @@ public:
 	void render(Screen *display);
 	void addShot(GameObjectShot shot);
 	bool collideInvaders(GameObjectShot *shot);
+	bool collidePlayer(GameObjectShot *shot);
 };

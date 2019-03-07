@@ -16,7 +16,6 @@ SIPlayer::SIPlayer() : GameObject()
 	texture[1][1] = '+';
 	texture[2][1] = '|';
 
-	//TODO Resize
 	position = { 6, 13 };
 	boundingBox = CollisionBox(position.x, position.y, 3, 2);
 }
@@ -41,7 +40,7 @@ void SIPlayer::tick(double delta)
 	}
 	else if (input::getPressed() == 72) { //Up arrow, fire.
 		GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
-		stateInvaders->addShot(GameObjectShot(1, { position.x + 1, position.y }));
+		stateInvaders->addShot(GameObjectShot(1, { position.x + 1, position.y }, PLAYER));
 		input::usedPress();
 	}
 	GameObject::tick(delta);

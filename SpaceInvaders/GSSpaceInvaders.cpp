@@ -92,4 +92,13 @@ bool GSSpaceInvaders::collideInvaders(GameObjectShot *shot)
 	return false;
 }
 
-
+bool GSSpaceInvaders::collidePlayer(GameObjectShot * shot)
+{
+	if (Collisions::overlapping(shot->boundingBox, player.boundingBox) == true) {
+		playerState = DEAD;
+		return true;
+	}
+	else {
+		return false;
+	}
+}

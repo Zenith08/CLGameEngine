@@ -8,6 +8,7 @@ class GObjSpaceInvader :
 	public GameObject
 {
 	int delays = 15;
+	int shooting = 1;
 
 	char animL[5][5];
 	char animR[5][5];
