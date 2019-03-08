@@ -30,6 +30,9 @@
     <ClInclude Include="GObjSpaceInvader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GObjShield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GObjSpaceInvader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GObjShield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

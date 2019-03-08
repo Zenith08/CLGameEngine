@@ -50,17 +50,23 @@ void GameObjectShot::tick(double delta)
 
 		GameObject::tick(delta); //Moves collision box.
 
-		if (shooter == PLAYER) {
-			GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
+		//Regardless of who shot it a shot can still damage a shield.
+		GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
 
+		if (stateInvaders->collideShield(this)) {
+			position.x = -1;
+			position.y = -1; //Effectivly kills this shot.
+		}
+
+		if (shooter == PLAYER) {
 			if (stateInvaders->collideInvaders(this)) {
+				position.x = -1;
 				position.y = -1; //Effectivly kills this shot.
 			}
 		}
 		else if (shooter == INVADER) {
-			GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
-
 			if (stateInvaders->collidePlayer(this)) {
+				position.x = -1;
 				position.y = 15; //Effectivly kills this shot.
 			}
 		}

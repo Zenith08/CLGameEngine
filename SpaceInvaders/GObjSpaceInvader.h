@@ -8,7 +8,7 @@ class GObjSpaceInvader :
 	public GameObject
 {
 	int delays = 15;
-	int shooting = 1;
+	int shooting = 2;
 
 	char animL[5][5];
 	char animR[5][5];
@@ -17,6 +17,8 @@ class GObjSpaceInvader :
 	bool alive = true;
 	bool moveDirection = RIGHT;
 
+	Vector2 start;
+
 public:
 	GObjSpaceInvader();
 	GObjSpaceInvader(Vector2 initial);
@@ -24,5 +26,6 @@ public:
 	void render(Screen *display);
 	bool isLiving();
 	void kill();
+	void respawn();
 };
 

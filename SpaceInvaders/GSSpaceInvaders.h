@@ -4,11 +4,13 @@
 #include "GameObjectWall.h"
 #include "SIPlayer.h"
 #include "GObjSpaceInvader.h"
+#include "GObjShield.h"
 
 #define NUM_SHOTS 32
 #define NUM_INVADERS 12
 #define ALIVE 0
 #define DEAD 1
+#define WIN 2
 
 class GSSpaceInvaders :
 	public GameState
@@ -30,7 +32,15 @@ public:
 	GameObjectWall right2;
 	GameObjectWall right3;
 
+	GObjShield shield1;
+	GObjShield shield2;
+	GObjShield shield3;
+
+	GObjShield *shields[3] = {};
+
 	SIPlayer player;
+
+	int flashFrame = 0;
 
 	GSSpaceInvaders();
 	void tick(double delta);
@@ -38,4 +48,7 @@ public:
 	void addShot(GameObjectShot shot);
 	bool collideInvaders(GameObjectShot *shot);
 	bool collidePlayer(GameObjectShot *shot);
+	bool collideShield(GameObjectShot *shot);
+	bool targetingPlayer(GObjSpaceInvader *invader);
+	void reset();
 };

@@ -50,3 +50,25 @@ void SIPlayer::render(Screen * display)
 {
 	GameObject::render(display);
 }
+
+bool SIPlayer::damage(int damage)
+{
+	life -= damage;
+	if (life <= 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void SIPlayer::respawn()
+{
+	life = MAX_LIFE;
+	position = { 6, 13 };
+}
+
+int SIPlayer::getLife()
+{
+	return life;
+}

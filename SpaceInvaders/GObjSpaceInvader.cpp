@@ -40,6 +40,7 @@ GObjSpaceInvader::GObjSpaceInvader(Vector2 initial)
 	animR[2][1] = '\\';
 
 	position = { initial.x, initial.y };
+	start = { initial.x, initial.y };
 	boundingBox = CollisionBox(position.x, position.y, 3, 2);
 }
 
@@ -88,8 +89,9 @@ void GObjSpaceInvader::tick(double delta)
 			//End movement logic
 
 			//Starts shooting logic
-			if (std::rand() % 100 < shooting) {
-				GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
+			GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
+
+			if (std::rand() % 100 < (shooting + (stateInvaders->targetingPlayer(this) * 2))) {
 				stateInvaders->addShot(GameObjectShot(1, { position.x + 1, position.y }, INVADER));
 			}
 		}
@@ -123,4 +125,11 @@ void GObjSpaceInvader::kill()
 	alive = false;
 	position.x = -5;
 	position.y = -5;
+}
+
+void GObjSpaceInvader::respawn()
+{
+	position = { start.x, start.y };
+	alive = true;
+	moveDirection = RIGHT;
 }

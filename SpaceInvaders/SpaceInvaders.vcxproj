@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GameObjectShot.h" />
+    <ClInclude Include="GObjShield.h" />
     <ClInclude Include="GObjSpaceInvader.h" />
     <ClInclude Include="GSSpaceInvaders.h" />
     <ClInclude Include="pch.h" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObjectShot.cpp" />
+    <ClCompile Include="GObjShield.cpp" />
     <ClCompile Include="GObjSpaceInvader.cpp" />
     <ClCompile Include="GSSpaceInvaders.cpp" />
     <ClCompile Include="pch.cpp">
