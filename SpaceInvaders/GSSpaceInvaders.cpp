@@ -182,8 +182,6 @@ bool GSSpaceInvaders::targetingPlayer(GObjSpaceInvader * invader)
 	}
 }
 
-
-
 void GSSpaceInvaders::reset()
 {
 	for (int i = 0; i < NUM_INVADERS; i++) {
@@ -196,5 +194,6 @@ void GSSpaceInvaders::reset()
 			shields[i]->respawn();
 		}
 	}
+	player.respawn();
 	playerState = ALIVE;
 }

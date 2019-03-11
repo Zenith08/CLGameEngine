@@ -1,14 +1,4 @@
 #pragma once
-//
-//  Screen.hpp
-//  CommandLineAnimator
-//
-//  Created by Period 2 on 2019-02-07.
-//  Copyright © 2019 Period 2. All rights reserved.
-//
-
-#ifndef Screen_hpp
-#define Screen_hpp
 
 #include "pch.h"
 #include <stdio.h>
@@ -17,6 +7,7 @@
 
 using namespace std;
 
+//Easy storage for the two main dimensions of the screen. 15x15 works pretty good for this.
 const int XSIZE = 15;
 const int YSIZE = 15;
 //BLANK is treated as transparency in textures. The char will be ignored and any previously rendered char will still show.
@@ -61,5 +52,3 @@ public:
 	//Clears the screen setting each array position to '?'.
 	void clear();
 };
-
-#endif /* Screen_hpp */

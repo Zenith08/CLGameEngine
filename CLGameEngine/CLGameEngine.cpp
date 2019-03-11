@@ -4,22 +4,12 @@
 //
 //  Written by Kaiden Richardson
 //  The main file is for testing and design purposes. A user would be able to initalize the necessary variables and call gameLoop() to run the game state they have created.
-//  Known Limmitations: There is currently no support for keyboard inputs.
-//  Date last modified: Friday February 15
+//  Known Limmitations: There is no display of how to play any given game.
 //
-#include "pch.h"
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include "Screen.h"
-#include "CollisionBox.h"
-#include "GameState.h"
-#include "GameStateJump.h"
-#include "GameInput.h"
-#include "GameEngine.h"
 
-using namespace Collisions;
-using namespace std;
+#include "pch.h"
+#include "GameStateJump.h"
+#include "GameEngine.h"
 
 GameStateJump jump = GameStateJump();
 

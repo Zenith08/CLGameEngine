@@ -3,7 +3,7 @@
 #include "GameStateJump.h"
 #include "Screen.h"
 
-//Enabling debug mode will print info like fps, frame time, and key presses to the screen but will also add lag.
+//Enabling debug mode will print metrics like fps, frame time, and key presses to the screen but will also add lag and jittering.
 //#define DEBUG_MODE
 
 namespace game {
@@ -14,7 +14,7 @@ namespace game {
 	void delay(int mSec);
 
 	//The number of updates per second the program will target. The game loop will sleep until at least this time passes between frames.
-	const double fps = 60.0;
+	const double fps = 30.0;
 	//The number of milliseconds that must pass before a new frame is started. This is set in initialization and simply used for the delay method.
 	const double frametime = 1000.0 / fps;
 	//While this is true, the game will continue. Pressing Q will set this to false signaling to the engine that it should shut down in a controlled way.

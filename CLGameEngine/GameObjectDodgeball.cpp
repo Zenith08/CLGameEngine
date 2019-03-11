@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
+//Default constructor prevents errors but really, we need a difficulty so it passes HARD difficulty represented by boolean false.
 GameObjectDodgeball::GameObjectDodgeball()
 {
 	GameObjectDodgeball(false);

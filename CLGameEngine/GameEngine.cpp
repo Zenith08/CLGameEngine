@@ -12,8 +12,7 @@
 //Code 27 ends the game
 
 //The current game state to run. It will recieve updates from the engine at the number of fps.
-//GameStateJump game::jumper = GameStateJump();
-GameState *game::state; // = &game::jumper;
+GameState *game::state;
 //The screen for the game to be rendered to. The screen has the ability to be drawn to and redrawn each frame.
 Screen game::display = Screen();
 
@@ -32,6 +31,7 @@ void game::gameLoop()
 	current = chrono::high_resolution_clock::now(); //Sets the current time to be equal to this time.
 	last = chrono::high_resolution_clock::now(); //Initializes the time of last frame to now. Just to have a base value, it should not matter.
 	deltaTime = current - last; //Initializes delta time, should not matter.
+	double sleepTime = 0; //The length of time we should sleep before rendering the next frame.
 
 	//Setting this to true before starting the loop makes sense. That way the loop actually runs.
 	contPlaying = true;
@@ -59,15 +59,21 @@ void game::gameLoop()
 		//Render display to the terminal.
 		display.render();
 
-		//Wait to keep a consistent frame rate of 30 fps
-		do {
-			current = chrono::high_resolution_clock::now(); //Sets the current time to where we are after the frame.
-			deltaTime = current - last; //Finds how much time has passed.
-			//If we have at least one millisecond until the next frame needs to run, then sleep for that millisecond.
-			if (deltaTime.count() + 1.3 < frametime) {
-				delay(1);
-			}
-		} while (deltaTime.count() < frametime); //If there was time to wait, return and update the information.
+		current = chrono::high_resolution_clock::now(); //Sets the current time to where we are after the frame.
+		deltaTime = current - last; //Finds how much time has passed.
+
+		//Find out how long we need to sleep for.
+		sleepTime = frametime - deltaTime.count();
+		if (sleepTime > 1) { //Make sure we are sleeping for at least 1 msec. ie. not 0 msecs.
+			delay(sleepTime); //Just wait until we're ready for the next frame
+		}
+
+#ifdef DEBUG_MODE //This will allow accurate display of the current frame rate. But we just don't need it if we aren't debugging so lets improve performance instead.
+		//Then continue on to the next frame.
+		current = chrono::high_resolution_clock::now(); //Allows us to get accurate frame rate readings
+		deltaTime = current - last; //Will be used for accurate fps calculation
+#endif
+
 		//Lastly set this current frame to the last frame and start over again.
 		last = chrono::high_resolution_clock::now();
 
@@ -82,7 +88,6 @@ void game::gameLoop()
 
 //Simple to use delay method to enable cleaner code.
 //Just calls the equivilant function of this_thread.
-//TODO should this be a macro?
 void game::delay(int mSec)
 {
 	this_thread::sleep_for(chrono::milliseconds(mSec));

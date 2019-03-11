@@ -48,18 +48,20 @@ GameStateJump::GameStateJump() : GameState() {
 	easyHighScore = 0;
 	highScore = 0;
 	
+	//Load the scores.
 	vector<int> scores = file::loadScores("dodgeball.dat");
-	if (scores.size() > 0) {
-		highScore = scores[0];
-		if (scores.size() > 1) {
-			easyHighScore = scores[1];
+	if (scores.size() > 0) { //If there is at least 1 point of data:
+		highScore = scores[0]; //The first point of data is the HARD mode high score.
+		if (scores.size() > 1) { //If the second point of data exists:
+			easyHighScore = scores[1]; //It is the high score in easy mode.
 		}
 	}
-	else {
+	else { //If there were no values in the high score:
+		scores.push_back(0); //Set both to 0
 		scores.push_back(0);
-		scores.push_back(0);
-		file::saveScores("dodgeball.dat", scores);
-		highScore = 0;
+		file::saveScores("dodgeball.dat", scores); //And save it so it doesn't cause errors later.
+		highScore = 0; //Then set the score variables to 0.
+		highScore = 0; //Then set the score variables to 0.
 		easyHighScore = 0;
 	}
 }

@@ -7,9 +7,6 @@
 //  Copyright © 2019 Period 2. All rights reserved.
 //  Known Limmitations: All textures must be 5x5 char arrays. They may include ' ' which is a blank but cannot be greater than 5x5.
 
-#ifndef GameObject_hpp
-#define GameObject_hpp
-
 #include "pch.h"
 #include <stdio.h>
 #include "Screen.h"
@@ -43,5 +40,3 @@ public:
 	//TODO comment
 	void clearTexture();
 };
-
-#endif /* GameObject_hpp */

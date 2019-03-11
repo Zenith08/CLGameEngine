@@ -3,6 +3,7 @@
 #include "GameEngine.h"
 #include <iostream>
 
+//Actually the player.
 GameObjectBall::GameObjectBall()
 {
 	GameObject::GameObject();
@@ -58,5 +59,6 @@ void GameObjectBall::tick(double delta)
 		}
 	}
 
+	//Updates the collision box to the current coordinates.
 	GameObject::tick(delta);
 }

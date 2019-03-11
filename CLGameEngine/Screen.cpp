@@ -9,7 +9,7 @@
 #include "Screen.h"
 #include <iostream>
 #include <string>
-#include "conio.h"
+
 using namespace std;
 
 //Initialize the screen - '?' is treated as ' ' and is used as a default value in the class.
@@ -62,7 +62,7 @@ void Screen::render() {
 	//cout << wipeScreen << endl;
 	//Frame is a single string which will be printed.
 	//Minimizing cout calls improves performance and the added cost of the string building is insignificant.
-	string frame = "";
+	string frame = ""; //Testing \n
 
 	//For each colum
 	for (int y = 0; y < XSIZE; y++) {
@@ -80,7 +80,7 @@ void Screen::render() {
 	}
 	//Once this is done, print the entire thing to the screen.
 	//Using endl here will cause a flush of the display buffer guarenteeing that the frame is drawn to the screen quickly.
-	cout << frame << endl;
+	cout << frame << flush;
 }
 
 void Screen::clear() {

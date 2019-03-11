@@ -1,10 +1,12 @@
 #include "GameObjectWall.h"
 
+//Default constructor prevents errors but shouldn't be used.
 GameObjectWall::GameObjectWall()
 {
 	GameObjectWall(0, 0, 1, 1);
 }
 
+//Allows creation of a wall with an input position and dimensions.
 GameObjectWall::GameObjectWall(int x, int y, int width, int height)
 {
 	GameObject::GameObject();

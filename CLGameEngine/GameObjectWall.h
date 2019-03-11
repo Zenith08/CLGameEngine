@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 //A procedural wall to be used for the game.
+//Walls can be a maximum of 5x5 and will auto generate a collision box and a texture based on the provided dimensions in the constructor.
 class GameObjectWall :
 	public GameObject
 {

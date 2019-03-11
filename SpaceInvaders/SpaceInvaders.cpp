@@ -6,6 +6,8 @@
 #include "GameEngine.h"
 #include "GSSpaceInvaders.h"
 
+using namespace std;
+
 GSSpaceInvaders space = GSSpaceInvaders();
 GameStateJump jump = GameStateJump();
 
@@ -20,17 +22,17 @@ int main()
 }
 
 void spaceInvaders() {
-		std::cout << "Space Invaders. \n";
+		cout << "Space Invaders. \n";
 		game::state = &space;
 		game::gameLoop();
-		std::cout << "End Space Invaders. \n";
+		cout << "End Space Invaders. \n";
 }
 
 void dodgeball() {
-	std::cout << "Dodgeball. \n";
+	cout << "Dodgeball. \n";
 	game::state = &jump;
 	game::gameLoop();
-	std::cout << "End Dodgeball. \n";
+	cout << "End Dodgeball. \n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

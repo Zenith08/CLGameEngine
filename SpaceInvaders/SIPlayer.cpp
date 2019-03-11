@@ -3,7 +3,7 @@
 #include "GameInput.h"
 #include "GameEngine.h"
 #include "GSSpaceInvaders.h"
-
+#include <iostream>
 
 SIPlayer::SIPlayer() : GameObject()
 {
@@ -22,6 +22,7 @@ SIPlayer::SIPlayer() : GameObject()
 
 void SIPlayer::tick(double delta)
 {
+	//std::cout << "Life = " << life << "\n";
 	if (input::getPressed() == 77) { //Left
 		boundingBox.setCoordinates(boundingBox.x + 1, boundingBox.y);
 		if (!game::getCurrentState()->overlapsStatic(this)) {
@@ -64,6 +65,7 @@ bool SIPlayer::damage(int damage)
 
 void SIPlayer::respawn()
 {
+	//std::cout << "Respawn";
 	life = MAX_LIFE;
 	position = { 6, 13 };
 }

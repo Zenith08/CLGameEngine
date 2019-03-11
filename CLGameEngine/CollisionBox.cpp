@@ -59,3 +59,17 @@ bool Collisions::overlapping(CollisionBox box1, CollisionBox box2) {
 	//std::cout << "No collision \n";
 	return false;
 }
+
+//A simulation used to find out why Collisions::overlapping was not working earlier in development.
+/*Ball 0, 6
+Left = 0, Right = 1
+Top = 6, Bottom = 7
+
+Wall
+Left = 0, Right = 1
+Top = 6, Bottom = 11
+
+if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
+     RectA.Top > RectB.Bottom && RectA.Bottom < RectB.Top )
+	 
+0 <= 1 && 1 >= 1 && 6 >= 11 && 7 <= 6*/

@@ -8,10 +8,12 @@
 
 #include "GameState.h"
 
+//Default blank constructor.
 GameState::GameState() {
 
 }
 
+//Defines tick, a tick runs once per frame.
 void GameState::tick(double delta) {
 	//Ticks each game object within the game state.
 	for (int i = 0; i < 255; i++) {
@@ -21,6 +23,7 @@ void GameState::tick(double delta) {
 	}
 }
 
+//Renders the screen. Called once per frame.
 void GameState::render(Screen *display) {
 	//Renders each object within the game state.
 	for (int i = 0; i < 255; i++) {
@@ -30,6 +33,7 @@ void GameState::render(Screen *display) {
 	}
 }
 
+//Easily adds a new game object to the world without overwriting previous game objects.
 void GameState::addGameObject(GameObject * newObj)
 {
 	int index = 0; //Start at 0, used to check what index the game object needs to be inserted to.
@@ -39,6 +43,7 @@ void GameState::addGameObject(GameObject * newObj)
 	objects[index] = newObj; //Then put the new object into the first available index.
 }
 
+//Indicates an object is a game object, and has a collision box which should be available to all other game objects.
 void GameState::addStaticCollider(GameObject * staticObj)
 {
 	addGameObject(staticObj); //First, a static collider is also a game object so make it one.

@@ -4,6 +4,7 @@
 #include <cstring>
 #include <sstream>
 
+//Load the scores in the file to a vector<int> and allow the developer to interperet the data as they need.
 vector<int> file::loadScores(string file)
 {
 	//Tell the user/developer this is happening.
@@ -14,7 +15,7 @@ vector<int> file::loadScores(string file)
 	string line;
 	vector<int> out = vector<int>();
 
-	//Run the file.
+	//Read the file.
 	while (getline(scFile, line)) { //Loop for each line.
 		cout << "Line read " << line << endl;
 		stringstream lineIn(line); //A stringstream makes getting the int value from the string possible.
@@ -28,6 +29,8 @@ vector<int> file::loadScores(string file)
 	return out;
 }
 
+//Allows the developer to save high scores after placing them into a vector<int>
+//The order scores are saved in is up to the developer.
 void file::saveScores(string file, vector<int> scores)
 {
 	//Tell the user/developer what file is being saved.

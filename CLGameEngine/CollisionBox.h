@@ -1,14 +1,4 @@
 #pragma once
-//
-//  CollisionBox.hpp
-//  CommandLineAnimator
-//
-//  Created by Period 2 on 2019-02-13.
-//  Copyright © 2019 Period 2. All rights reserved.
-//
-
-#ifndef CollisionBox_hpp
-#define CollisionBox_hpp
 
 #include "pch.h"
 #include <stdio.h>
@@ -35,5 +25,3 @@ namespace Collisions {
 	//Returns true if they are.
 	bool overlapping(CollisionBox box1, CollisionBox box2);
 }
-
-#endif /* CollisionBox_hpp */

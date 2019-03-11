@@ -76,7 +76,7 @@ void GObjSpaceInvader::tick(double delta)
 					position.x--; //Then do it.
 				}
 			}
-			else if (moveDirection == RIGHT) { //Equivilent to else but shows more clarity.
+			else if (moveDirection == RIGHT) { //Equivilent to else{} but shows more clarity.
 				boundingBox.x++; //Try to move right
 				if (game::getCurrentState()->overlapsStatic(this)) { //If we are hitting a wall
 					position.y++; //Move down instead
@@ -91,7 +91,7 @@ void GObjSpaceInvader::tick(double delta)
 			//Starts shooting logic
 			GSSpaceInvaders *stateInvaders = dynamic_cast<GSSpaceInvaders*>(game::getCurrentState());
 
-			if (std::rand() % 100 < (shooting + (stateInvaders->targetingPlayer(this) * 2))) {
+			if (std::rand() % 100 < (shooting + (stateInvaders->targetingPlayer(this) * 8))) {
 				stateInvaders->addShot(GameObjectShot(1, { position.x + 1, position.y }, INVADER));
 			}
 		}
@@ -132,4 +132,5 @@ void GObjSpaceInvader::respawn()
 	position = { start.x, start.y };
 	alive = true;
 	moveDirection = RIGHT;
+	currentFrame = 1;
 }

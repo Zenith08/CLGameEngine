@@ -1,14 +1,4 @@
 #pragma once
-//
-//  GameState.hpp
-//  CommandLineAnimator
-//
-//  Created by Period 2 on 2019-02-14.
-//  Copyright © 2019 Period 2. All rights reserved.
-//
-
-#ifndef GameState_hpp
-#define GameState_hpp
 
 #include "pch.h"
 #include <stdio.h>
@@ -43,5 +33,3 @@ public:
 	//Allows a dynamic game object to check if it is overlapping any static game object in the world based on the supplied collision box.
 	bool overlapsStatic(GameObject *dynamicQuestion);
 };
-
-#endif /* GameState_hpp */
