@@ -18,7 +18,7 @@ void dodgeball();
 
 int main()
 {
-	spaceInvaders(); //Space invaders is just what we are demonstrating.
+	spaceInvaders(); //Space invaders is just what we are demonstrating now.
 	
 	return 0;
 }
