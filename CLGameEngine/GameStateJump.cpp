@@ -154,8 +154,8 @@ void GameStateJump::render(Screen *display) {
 		display->drawString(getHighScore(), 2, 9);
 	}
 	else if (inGame == difficultySelect) {
-		display->drawString("Choose a", 2, 0);
-		display->drawString("difficulty:", 3, 0);
+		display->drawString("Choose a", 3, 1);
+		display->drawString("difficulty:", 2, 2);
 		display->drawString("Press E for", 2, 4);
 		display->drawString("easy.", 2, 5);
 		display->drawString("Press H for", 2, 6);

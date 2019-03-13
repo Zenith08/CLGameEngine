@@ -53,6 +53,7 @@ void GameObjectDodgeball::tick(double delta)
 {
 	//cout << "VelX = " << velocity.x << " vely " << velocity.y << "\n";
 	timeTilMove-=delta; //Slows the ball down by not moving each frame.
+	//cout << "TimeTilMove " << timeTilMove << " delay " << DELAY << "\n";
 	if (timeTilMove <= 0) { //Indicates it is a movement frame.
 		boundingBox.setCoordinates(position.x + velocity.x, position.y + velocity.y); //Move the collider to check the new coords.
 		if (game::getCurrentState()->overlapsStatic(this)) { //Check if the new position overlaps a static collider.
@@ -93,7 +94,7 @@ void GameObjectDodgeball::tick(double delta)
 			position.y += velocity.y;
 		}
 		//std::cout << "Dodgeball X " << position.x << " Y" << position.y << "\n";
-		timeTilMove = 100; //Resets the frame count until the next movement.
+		timeTilMove = DELAY; //Resets the frame count until the next movement.
 	}
 	GameObject::tick(delta);
 }

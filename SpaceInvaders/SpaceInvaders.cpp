@@ -13,13 +13,16 @@ GSSpaceInvaders space = GSSpaceInvaders();
 //A showcase dodgeball game state.
 GameStateJump jump = GameStateJump();
 
+//A simple function which makes Space Invaders the active Game State and then runs it.
 void spaceInvaders();
+//A simple function which makes Dodgeball the active Game State and then runs it.
 void dodgeball();
 
 int main()
 {
-	spaceInvaders(); //Space invaders is just what we are demonstrating now.
-	
+	//spaceInvaders(); //Space invaders is just what we are demonstrating now.
+	dodgeball();
+
 	return 0;
 }
 
