@@ -20,8 +20,8 @@ void dodgeball();
 
 int main()
 {
-	//spaceInvaders(); //Space invaders is just what we are demonstrating now.
-	dodgeball();
+	spaceInvaders(); //Space invaders is just what we are demonstrating now.
+	//dodgeball(); Makes showing dodgeball easier so just uncomment this.
 
 	return 0;
 }
