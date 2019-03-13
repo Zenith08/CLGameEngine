@@ -34,4 +34,3 @@ public:
 	//If this returns true, the shield can block shots and take damage.
 	bool living();
 };
-

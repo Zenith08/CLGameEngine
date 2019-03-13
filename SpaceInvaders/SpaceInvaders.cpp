@@ -28,10 +28,10 @@ int main()
 
 //Creates and starts space invaders.
 void spaceInvaders() {
-		cout << "Space Invaders. \n";
-		game::state = &space;
-		game::gameLoop();
-		cout << "End Space Invaders. \n";
+	cout << "Space Invaders. \n";
+	game::state = &space;
+	game::gameLoop();
+	cout << "End Space Invaders. \n";
 }
 
 //Creates and starts dodgeball.

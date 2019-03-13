@@ -29,4 +29,3 @@ public:
 	//Returns the ammount of life the player currently has.
 	int getLife();
 };
-

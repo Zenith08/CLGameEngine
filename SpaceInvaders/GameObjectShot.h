@@ -27,4 +27,3 @@ public:
 	//Render allows custom rendering of the texture and is used to disable rendering in certain situations.
 	void render(Screen *display);
 };
-

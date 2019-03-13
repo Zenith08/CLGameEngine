@@ -12,4 +12,3 @@ public:
 	//Allows updating movement and collision box position.
 	void tick(double delta);
 };
-

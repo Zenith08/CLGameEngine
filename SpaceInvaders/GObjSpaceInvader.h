@@ -43,4 +43,3 @@ public:
 	//Resets the invader to it's default position and sets it to living.
 	void respawn();
 };
-

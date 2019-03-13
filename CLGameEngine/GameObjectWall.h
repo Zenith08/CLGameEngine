@@ -15,4 +15,3 @@ public:
 	//These walls are not intended to move.
 	GameObjectWall(int x, int y, int width, int height);
 };
-
