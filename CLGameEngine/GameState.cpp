@@ -5,7 +5,7 @@
 //  Created by Period 2 on 2019-02-14.
 //  Copyright © 2019 Period 2. All rights reserved.
 //
-
+#include "pch.h"
 #include "GameState.h"
 
 //Default blank constructor.

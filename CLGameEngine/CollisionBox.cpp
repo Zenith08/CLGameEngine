@@ -6,6 +6,7 @@
 //  Copyright © 2019 Period 2. All rights reserved.
 //
 
+#include "pch.h"
 #include "CollisionBox.h"
 #include <iostream>
 

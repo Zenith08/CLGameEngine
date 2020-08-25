@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "GameObject.h"
 
 //Create a defualt game object. Recommended to call to prevent errors.

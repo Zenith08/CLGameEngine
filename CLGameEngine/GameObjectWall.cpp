@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "GameObjectWall.h"
 
 //Default constructor prevents errors but shouldn't be used.
