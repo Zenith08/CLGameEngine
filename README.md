@@ -11,7 +11,9 @@ Each game can also have a list of `GameObjects`. Each Game Object defines a thin
 ## Games
 ### Dodgeball
 ![Easy Mode](/docs/dodgeball.png) ![Hard Mode](/docs/dodgeball-hard.png)
+
 Dodgeball is a simple game where the player plays as a dot on the screen. The goal is to avoid the large ball for as long as possible and gain a high score. Thanks to a persistance system, the high score is even saved for the next player.
 ### Space Invaders
 ![Space Invaders](/docs/space-invaders.png)
+
 Based on the classic arcade game, this rendition of Space Invaders was designed to showcase the flexability and expandability of this game engine. Featuring animated enemies, shields with limited durability, and more, this game shows the extent of what is possible with a basic understanding of programming, and the command line.
